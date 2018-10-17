@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const PORT = 8080;
 const bodyParser = require('body-parser');
+const bootstrap = require('bootstrap');
 const cookieSession = require('cookie-session');
 const knexConfig = require('./knexfile').development;
 const knex = require('knex')(knexConfig);
@@ -10,7 +11,6 @@ const {Client} = require('pg');
 const client = new Client({
   database: 'restaurant_app'
 });
-
 
 client.connect((err) => {
 
