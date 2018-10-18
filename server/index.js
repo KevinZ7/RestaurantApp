@@ -14,33 +14,12 @@ const client = new Client({
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
-// client.connect((err) => {
-
-
-//   // app.use(cookieSession({
-//   //   name: 'session',
-//   //   keys: ['nokeys'],
-//   // }));
-
-//   // const {
-//   //   getCartProducts
-//   // } = require('./data-helpers/cart-knex')(knex);
+client.connect((err) => {
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-// });
+ });
 
 
 
