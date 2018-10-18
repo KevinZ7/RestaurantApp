@@ -3,7 +3,10 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      database: 'restaurant_app'
+      host : "localhost",
+      user : "development",
+      password : "development",
+      database : "restaurant_app"
     }
   },
 
