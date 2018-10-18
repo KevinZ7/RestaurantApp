@@ -20,6 +20,11 @@ exports.up = function(knex, Promise) {
     menuItem.string('name');
     menuItem.string('description');
     menuItem.integer('price');
+    menuItem.string('avatar');
+  })
+  .createTable('cart', function(cart){
+    cart.increments('id').primary();
+    cart.integer('total');
   })
 };
 
@@ -28,5 +33,6 @@ exports.down = function(knex, Promise) {
   .dropTable('menu_item')
   .dropTable('list_item')
   .dropTable('order')
-  .dropTable('user')
+  .dropTable('users')
+  .dropTable('cart')
 };
