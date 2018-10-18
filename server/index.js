@@ -14,15 +14,16 @@ const client = new Client({
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
-client.connect((err) => {
+// client.connect((err) => {
+//   if(err) throw err;
 
 
 
+app.post("/orders", (req,res) => {
+  let order = req.body
+  console.log(order.cart[0].id);
 
- });
-
-
-
+})
 
 
 
