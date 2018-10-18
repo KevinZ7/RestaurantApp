@@ -1,24 +1,25 @@
 
 exports.up = function(knex, Promise) {
   return knex.schema
-  .createTable('user', function(user){
-    user.string('username').primary();
+  .createTable('users', function(user){
+    user.increments('id').primary();
     user.string('name');
     user.string('phone');
+    user.string('username');
     user.string('password');
   })
   .createTable('order', function(order){
-    order.serial('id').primary();
+    order.increments('id').primary();
   })
   .createTable('list_item', function(orderList){
-    orderList.serial('id').primary();
+    orderList.increments('id').primary();
     orderList.integer('quantity');
   })
   .createTable('menu_item', function(menuItem){
-    menuItem.serial('id').primary();
+    menuItem.increments('id').primary();
     menuItem.string('name');
     menuItem.string('description');
-    menuItem.money('price');
+    menuItem.integer('price');
   })
 };
 
