@@ -29,7 +29,6 @@ $(document).ready(function(){
   });
 
 
-
   $(".submitOrder").click((event) =>{
 
     $.ajax('/orders', {
@@ -118,8 +117,5 @@ $(document).ready(function(){
 
 
 });
-
-
-
 
 
