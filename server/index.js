@@ -25,6 +25,46 @@ app.post("/orders", (req,res) => {
 
 })
 
+function exitInCart(userid, itemid){
+  return knex('cart').
+
+}
+// function CheckInDB(userId, ItemID){
+//   knex.selecT('');
+
+// }
+
+app.post("/addToCart", (req,res) => {
+
+  // //Check whether the ID exists of not
+  // let id = CheckIdinDb(userId, itemID)
+  // if(id){
+  //   //it means the id already exists in the CART
+  //   //UPDATE the QUANTITY
+  // } else {
+  //   //It does not exitss
+  //   //INSERT A NEW ROW
+  // }
+
+  let itemId = req.body.item_id
+  console.log(itemId);
+
+  return knex('list_item')
+  .returning('*')
+  .insert([{
+    menu_item_id: itemId
+  }]);
+  .then(()=>{
+    return knex('cart')
+    .returning('*')
+    .insert([{
+      list_item_id:
+    }])
+
+  })
+
+})
+
 
 
 

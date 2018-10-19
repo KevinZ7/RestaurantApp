@@ -8,31 +8,31 @@ exports.up = function(knex, Promise) {
     user.string('username');
     user.string('password');
   })
-  .createTable('order', function(order){
+  .createTable('customer_orders', function(order){
     order.increments('id').primary();
+    order.date('date');
+    order.time('time');
   })
-  .createTable('list_item', function(orderList){
+  .createTable('order_line_items', function(orderList){
     orderList.increments('id').primary();
-    orderList.integer('quantity');
   })
-  .createTable('menu_item', function(menuItem){
+  .createTable('menu_items', function(menuItem){
     menuItem.increments('id').primary();
     menuItem.string('name');
     menuItem.string('description');
     menuItem.integer('price');
     menuItem.string('avatar');
   })
-  .createTable('cart', function(cart){
+  .createTable('cart_line_items', function(cart){
     cart.increments('id').primary();
-    cart.integer('total');
   })
 };
 
 exports.down = function(knex, Promise) {
   return knex.schema
-  .dropTable('menu_item')
-  .dropTable('list_item')
-  .dropTable('order')
+  .dropTable('menu_items')
+  .dropTable('order_line_items')
+  .dropTable('customer_orders')
   .dropTable('users')
-  .dropTable('cart')
+  .dropTable('cart_line_items')
 };

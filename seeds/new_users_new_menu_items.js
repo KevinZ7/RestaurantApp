@@ -1,6 +1,6 @@
 exports.seed = function(knex) {
 
-  const deleteAllMenuitems = knex('menu_item').del();
+  const deleteAllMenuitems = knex('menu_items').del();
   const deleteAllUsers = deleteAllMenuitems
   .then(() => {
     return knex('users').del()
@@ -9,7 +9,7 @@ exports.seed = function(knex) {
 
   const createNewMenuItems = deleteAllUsers
   .then(()=>{
-    return knex('menu_item')
+    return knex('menu_items')
     .returning('*')
     .insert([{
       name: 'Triple Chocolate Glaze',
