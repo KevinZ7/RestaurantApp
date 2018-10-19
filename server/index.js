@@ -7,6 +7,7 @@ const cookieSession = require('cookie-session');
 const accountSid = 'ACd728bad50e82e0eb6580df59e1a5f4eb';
 const authToken = '11bdece36506ddf4a69ac72fede9166a';
 const twilio= require('twilio')(accountSid, authToken);
+// const twiml = twilio.TwimlResponse();
 const knexConfig = require('../knexfile').development;
 const knex = require('knex')(knexConfig);
 const {Client} = require('pg');
@@ -17,7 +18,19 @@ const client = new Client({
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
+// app.post('/sms', function(req, res) {
+//   var twilio = require('twilio');
+//   var twiml = new twilio.TwimlResponse();
+//   twiml.message('The Robots are coming! Head for the hills!');
+//   res.writeHead(200, {'Content-Type': 'text/xml'});
+//   res.end(twiml.toString());
+// });
 
+app.get('/cart', (req, res) =>{
+let cartData = getCart(1);
+
+  res.send(cartData)
+})
 
 
 function addToCart(itemId,userId,res){
@@ -26,39 +39,32 @@ function addToCart(itemId,userId,res){
     users_id: userId,
     menu_items_id : itemId
   }).then(() => {
-
-twilio.messages.create(
-  {
-    to: '+16044410372',
-    from: '+17782007215',
-    body: 'You just added a new item to your cart!',
-  },
-  (err, message) => {
-    console.log(message.id);
-  }
-);
-    res.status(201);
+    // twilio.messages.create(
+    //   {
+    //     to: '+17786833957',
+    //     from: '+17782007215',
+    //     body: 'hey kevin this is your app',
+    //   },
+    //   (err, message) => {
+    //     console.log("all is good");
+    //   }
+    // );
   })
 };
 
 function getCart(userId){
+  cart = [];
   return knex('cart_line_items')
   .join('menu_items', 'menu_items_id', '=', 'menu_items.id')
-  .select('menu_items.id')
+  .select('menu_items.id', 'menu_items.name', 'menu_items.avatar','menu_items.price')
   .where({
     users_id: userId
   })
-  .asCallback((err,result) => {
-   return result;
+  .then((result) => {
+   console.log(result)
   })
+  // return cart
 }
-
-
-
-
-
-
-
 
 
 
