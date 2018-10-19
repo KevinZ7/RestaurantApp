@@ -9,8 +9,32 @@ $(document).ready(function(){
       method: "POST",
       data: {
         item_id: itemId
+      },
+      success: (val) => {
+        console.log(val);
+        $('p').remove();
+        $('footer').remove();
+        var cart = val.cart;
+        var total = 0;
+
+        cart.forEach((cartItem, i) =>{
+          total += Number(cartItem.sum)/100;
+          $('div').append($('<p>').text(cartItem.id).append($('<button>').addClass("deletButtons").attr('id','delete_'+cartItem.id).text("delete"))
+            .append($('<p>').text(cartItem.name)).append($('<p>').text(cartItem.count)))
+        })
+
+
+
+        $('div').append($('<footer>').text(`price: $ ${total}`));
+
+
+
+
+        // console.log(val.cart);
       }
     })
+
+
 
     // var found = false;
     // cart.forEach(function(item){
