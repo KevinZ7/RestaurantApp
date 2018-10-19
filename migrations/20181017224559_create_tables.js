@@ -28,5 +28,5 @@ exports.down = function(knex, Promise) {
   .dropTable('menu_item')
   .dropTable('list_item')
   .dropTable('order')
-  .dropTable('user')
+  .dropTable('users')
 };
