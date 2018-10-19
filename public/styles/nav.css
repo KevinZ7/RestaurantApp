@@ -11,6 +11,6 @@
 .navbar-brand {
     color: #fff;
     text-transform: uppercase;
-    font-kerning: 2em;
     font-size: 1em;
+    text-decoration: none;
 }

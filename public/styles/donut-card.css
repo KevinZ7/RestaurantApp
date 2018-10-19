@@ -12,15 +12,16 @@
 .donut-card {
     background: #ffffff;
     flex-basis: 30%;
-    min-width: 240px;
+    min-width: 300px;
+    margin: 0 .3em 1em .3em;
 }
 @media only screen and (max-width: 600px) {
     .donut-card {
         flex-basis: 100%;
-        background-color: blue;
     }
 }
 
+/* image */
 .card-display {
     width: 100%
 }

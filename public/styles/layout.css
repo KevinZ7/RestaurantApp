@@ -17,10 +17,10 @@ body {
 }
 
 footer {
-background: #233340;
-position: sticky;
-color: #fff;
-padding: 1em;
+    background: #233340;
+    position: sticky;
+    color: #fff;
+    padding: 1em;
 }
 
 section {
@@ -37,3 +37,9 @@ main {
     display: flex;
     flex-direction: column;
 }
+
+
+
+
+
+/*# sourceMappingURL=layout.css.map */
