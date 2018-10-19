@@ -31,11 +31,8 @@ $(document).ready(function(){
 
   $(".submitOrder").click((event) =>{
 
-    $.ajax('/orders', {
-      method: "POST",
-      data: {
-        cart: cart
-      }
+    $.ajax('/addToOrder', {
+      method: "POST"
     })
 
   })
