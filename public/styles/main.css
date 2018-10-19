@@ -1,0 +1,12 @@
+
+/* main.css */
+
+.hero-banner {
+    width: 100%;
+    height: 500px;
+    background-image: url(/images/donut-hero1.jpg);
+    text-align: center;
+    color: #fff
+}
+
+

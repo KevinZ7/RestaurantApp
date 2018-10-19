@@ -1,1 +1,17 @@
-/* layout */
+/* layout.css Restaurant App */
+
+body {
+    margin: 0;
+    color: #000;
+    font-family: 'Work Sans', sans-serif;
+    background-color: rgba(255, 255, 255, 0.835);
+}
+
+.container {
+    display: flex;
+}
+
+.v-container {
+    display: flex;
+    flex-direction: column;
+}
