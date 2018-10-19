@@ -1,44 +1,45 @@
-
-
-
 $(document).ready(function(){
-
-
-
 
   var cart = [];
 
+  $(".orderButtons").click((event) => {
+    let itemId = event.target.id;
 
-$(".orderButtons").click((event) => {
-  var found = false;
-  cart.forEach(function(item){
-    if(item.id === event.target.id){
-      item.quantity += 1;
-      found = true;
-    }
+    $.ajax('/addToCart', {
+      method: "POST",
+      data: {
+        item_id: itemId
+      }
+    })
+
+    // var found = false;
+    // cart.forEach(function(item){
+    //   if(item.id === event.target.id){
+    //     item.quantity += 1;
+    //     found = true;
+    //   }
+    // })
+
+    // if(found === false){
+    //   cart.push({
+    //     id: event.target.id,
+    //     quantity: 1
+    //   });
+    // }
+  });
+
+
+
+  $(".submitOrder").click((event) =>{
+
+    $.ajax('/orders', {
+      method: "POST",
+      data: {
+        cart: cart
+      }
+    })
+
   })
-
-  if(found === false){
-    cart.push({
-      id: event.target.id,
-      quantity: 1
-    });
-  }
-
-console.log(cart)
-});
-
-
-
-$(".submitOrder").click((event) =>{
-  console.log(cart)
-  $.ajax('/orders', {
-    method: "POST",
-    data: {
-      cart: cart
-    }
-  })
-})
 
 
 
@@ -117,8 +118,5 @@ $(".submitOrder").click((event) =>{
 
 
 });
-
-
-
 
 
