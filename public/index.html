@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Copse|Work+Sans:400,700" rel="stylesheet">
@@ -26,18 +26,18 @@
     <!-- main content -->
     <main>
 
-        <section class="container">
+        <section>
             <header class="hero-banner">
                 <nav id="nav-bar">
                     <img class="logo" src="images/donut1.jpg">
-                    <span class="header">Donut Party</span>
+                    <a class="navbar-brand" href="index.html">Donut Party</a>
                 </nav>
                 <h1>Gonuts Donuts</h1>
                 <button>View Donuts</button>
             </header>
         </section>
         <!--About Section-->
-        <section id="about" class="container">
+        <section id="about">
             <article>
                 <p>Vanilla croissant vanilla vanilla apple cake sugar pastry marzipan cake. Ipsum muffin jelly biscuit
                     ipsum biscuit tiramisu sweet apple biscuit. Pastry pastry pastry pastry sweet apple dolor sprinkles
@@ -45,16 +45,16 @@
                 </p>
             </article>
             <article>
-                <img class="half-img" src="images/about_img_2.jpg" alt="Donut with a bite taken out of it">
+                <img src="images/about_img_2.jpg" alt="Donut with a bite taken out of it">
             </article>
         </section>
 
         <!--Donut Menu-->
-        <section class="container">
+        <section>
             <h2>Donuts</h2>
             <p>Pick your donuts</p>
         </section>
-        <section class="container" id="donuts">
+        <section class="card-layout" id="donuts">
             <!--donut 1-->
             <article class="donut-card">
                 <header>
@@ -68,6 +68,42 @@
                 </section>
             </article>
             <!--donut 2-->
+            <article class="donut-card">
+                <header>
+                    <img class="card-display" src="/images/donut2.jpg">
+                </header>
+                <section class="donut-content">
+                    <h3 class="name">Citrus Glazed</h3>
+                    <p>Lemon-lime glazed donut</p>
+                    <span class="price">$5.00</span>
+                    <button>Add to cart</button>
+                </section>
+            </article>
+            <!--donut 3-->
+            <article class="donut-card">
+                <header>
+                    <img class="card-display" src="/images/donut3.jpg">
+                </header>
+                <section class="donut-content">
+                    <h3 class="name">Sprinkled Madness</h3>
+                    <p>Classic honey glaze with birthday sprinkles</p>
+                    <span class="price">$5.00</span>
+                    <button>Add to cart</button>
+                </section>
+            </article>
+            <!--donut 1-->
+            <article class="donut-card">
+                <header>
+                    <img class="card-display" src="/images/donut1.jpg">
+                </header>
+                <section class="donut-content">
+                    <h3 class="name">Chocolate Glazed</h3>
+                    <p>Chocolate dipped donut</p>
+                    <span class="price">$5.00</span>
+                    <button class="primary-btn">Add to cart</button>
+                </section>
+            </article>
+
             <article class="donut-card">
                 <header>
                     <img class="card-display" src="/images/donut2.jpg">
