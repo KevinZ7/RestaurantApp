@@ -4,8 +4,8 @@ const app = express();
 const PORT = 8080;
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
-const accountSid = 'ACd728bad50e82e0eb6580df59e1a5f4eb';
-const authToken = '11bdece36506ddf4a69ac72fede9166a';
+const accountSid = 'AC3fd0f60292368f6415acd32dbca3b9c9';
+const authToken = '2c9bd5dc5aef8d1295dd734ac27dda2a';
 const twilio= require('twilio')(accountSid, authToken);
 const knexConfig = require('../knexfile').development;
 const knex = require('knex')(knexConfig);
@@ -20,34 +20,37 @@ app.use(express.static('public'));
 
 
 
-function addToCart(itemId,userId,res){
-  knex('cart_line_items')
+function addToCart(itemId,userId,cb){
+  return knex('cart_line_items')
   .insert({
     users_id: userId,
     menu_items_id : itemId
   }).then(() => {
 
-twilio.messages.create(
-  {
-    to: '+16044410372',
-    from: '+17782007215',
-    body: 'You just added a new item to your cart!',
-  },
-  (err, message) => {
-    console.log(message.id);
-  }
-);
-    res.status(201);
+// twilio.messages.create(
+//   {
+//     to: '+16044410372',
+//     from: '+16042655347',
+//     body: 'You just added a new item to your cart!',
+//   },
+//   (err, message) => {
+//     console.log(message.sid);
+//   }
+// );
+    cb()
   })
 };
 
 function getCart(userId){
   return knex('cart_line_items')
   .join('menu_items', 'menu_items_id', '=', 'menu_items.id')
-  .select('menu_items.id')
+  .select('menu_items.id','menu_items.name')
+  .count('*')
+  .sum('menu_items.price')
   .where({
     users_id: userId
   })
+  .groupBy('menu_items.id')
   .asCallback((err,result) => {
    return result;
   })
@@ -65,8 +68,17 @@ function getCart(userId){
 app.post("/addToCart", (req,res) => {
   let itemId = req.body.item_id;
   let userId = 1;
-  addToCart(itemId,userId,res);
+  addToCart(itemId,userId,() => {
+    getCart(userId)
+      .then((cart) => {
+        res.status(201);
+        res.json({cart: cart})
+      })
+
+  });
 });
+
+
 
 app.post("/addToOrder", (req,res) => {
   let userId = 1;
@@ -86,7 +98,7 @@ app.post("/addToOrder", (req,res) => {
           menu_items_id : item.id
         })
         .then(() => {
-          res.status(201);
+          res.status(201).end();
         })
       })
     })
