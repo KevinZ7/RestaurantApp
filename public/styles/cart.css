@@ -1,3 +1,20 @@
-/* Cart .css */
+/* Cart Modal */
+.modal-body {
+  background-color: purple;
+}
+
+.modal-body {
+  color: lightsalmon;
+}
+.modal-body .name {
+  color: red;
+}
+.modal-body .qty {
+  font-size: 40px;
+  color: blue;
+}
+.modal-body .price {
+  color: orange;
+}
 
 /*# sourceMappingURL=cart.css.map */

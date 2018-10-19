@@ -1,6 +1,11 @@
 /* Donut Card CSS */
+a {
+    text-decoration: none;
+}
 
-
+a:hover {
+    text-decoration: none;
+}
 
 .card-layout {
     display: flex;
@@ -14,21 +19,46 @@
     flex-basis: 30%;
     min-width: 300px;
     margin: 0 .3em 1em .3em;
+
+    &__img {
+        width: 100%
+    }
+
+    &__body-text {
+        text-align: center;
+        padding: .8em;
+    }
+
+    &__name {
+        color: red;
+    }
+
+    &__price {
+        color: purple;
+    }
+
+    &__description {
+        color: green;
+    }
+
+    &__btn {
+        background-color: red;
+        color: #fff;
+        text-transform: uppercase;
+        // letter-spacing: .2em;
+        font-weight: 700;
+        padding: .5em;
+    }
+
+    &__btn:hover {
+        background-color: green;
+        color: #000;
+    }
+
 }
+
 @media only screen and (max-width: 600px) {
     .donut-card {
         flex-basis: 100%;
     }
 }
-
-/* image */
-.card-display {
-    width: 100%
-}
-
-.donut-content {
-    text-align: center;
-    padding: .8em;
-
-}
-

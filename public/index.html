@@ -18,7 +18,11 @@
     <link rel="stylesheet" href="/styles/nav.css">
     <link rel="stylesheet" href="/styles/donut-card.css">
     <link rel="stylesheet" href="/styles/about-section.css">
+    <link rel="stylesheet" href="/styles/cart.css">
+
+    <!-- Vendor CSS-->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css">
+    <link rel="stylesheet" href="/vendor/border-box.css">
 
     <title>Home Page</title>
 </head>
@@ -33,8 +37,8 @@
                     <!-- <img class="logo" src="images/donut1.jpg"> -->
                     <a class="navbar-brand" href="index.html">Donut Party</a>
                 </nav>
-                <h1>Gonuts Donuts</h1>
-                <button>View Donuts</button>
+                <h1 class="hero-banner__title">Gonuts Donuts</h1>
+                <button class="hero-banner__btn">View Donuts</button>
             </header>
         </section>
         <!--About Section-->
@@ -50,84 +54,94 @@
             </article>
         </section> -->
 
-        <!--Donut Menu-->
+        <!--Donut Menu Intro-->
         <section>
             <h2>Donuts</h2>
             <p>Pick your donuts</p>
         </section>
+        <!--Donut Cards-->
         <section class="card-layout" id="donuts">
             <!--donut 1-->
             <article class="donut-card">
                 <header>
-                    <img class="card-display" src="/images/donut1.jpg">
+                    <img class="donut-card__img" src="/images/donut1.jpg">
                 </header>
-                <section class="donut-content">
-                    <h3 class="name">Chocolate Glazed</h3>
-                    <p>Chocolate dipped donut</p>
-                    <span class="price">$5.00</span>
-                    <!-- <button class="primary-btn">Add to cart</button> -->
-                    <p class="mb-0"><a href="#" class="primary-btn" target="_blank" data-toggle="modal" data-target="#cartModal">Add
-                            to Cart</a></p>
+                <section class="donut-card__body-text">
+                    <h3 class="donut-card__name">Chocolate Glazed</h3>
+                    <p class="donut-card__description">Chocolate dipped donut</p>
+                    <span class="donut-card__price">$5.00</span>
+                    <button class="donut-card__btn"><a href="#" target="_blank" data-toggle="modal" data-target="#cartModal">Add
+                            to Cart</a></button>
                 </section>
             </article>
             <!--donut 2-->
             <article class="donut-card">
                 <header>
-                    <img class="card-display" src="/images/donut2.jpg">
+                    <img class="donut-card__img" src="/images/donut1.jpg">
                 </header>
-                <section class="donut-content">
-                    <h3 class="name">Citrus Glazed</h3>
-                    <p>Lemon-lime glazed donut</p>
-                    <span class="price">$5.00</span>
-                    <button>Add to cart</button>
+                <section class="donut-card__body-text">
+                    <h3 class="donut-card__name">Chocolate Glazed</h3>
+                    <p class="donut-card__description">Chocolate dipped donut</p>
+                    <span class="donut-card__price">$5.00</span>
+                    <!-- <button class="primary-btn">Add to cart</button> -->
+                    <a href="#" class="primary-btn" target="_blank" data-toggle="modal" data-target="#cartModal">Add
+                        to Cart</a>
                 </section>
             </article>
             <!--donut 3-->
             <article class="donut-card">
                 <header>
-                    <img class="card-display" src="/images/donut3.jpg">
+                    <img class="donut-card__img" src="/images/donut1.jpg">
                 </header>
-                <section class="donut-content">
-                    <h3 class="name">Sprinkled Madness</h3>
-                    <p>Classic honey glaze with birthday sprinkles</p>
-                    <span class="price">$5.00</span>
-                    <button>Add to cart</button>
+                <section class="donut-card__body-text">
+                    <h3 class="donut-card__name">Chocolate Glazed</h3>
+                    <p class="donut-card__description">Chocolate dipped donut</p>
+                    <span class="donut-card__price">$5.00</span>
+                    <!-- <button class="primary-btn">Add to cart</button> -->
+                    <a href="#" class="primary-btn" target="_blank" data-toggle="modal" data-target="#cartModal">Add
+                        to Cart</a>
                 </section>
             </article>
-            <!--donut 1-->
+            <!--donut 4-->
             <article class="donut-card">
                 <header>
-                    <img class="card-display" src="/images/donut1.jpg">
+                    <img class="donut-card__img" src="/images/donut1.jpg">
                 </header>
-                <section class="donut-content">
-                    <h3 class="name">Chocolate Glazed</h3>
-                    <p>Chocolate dipped donut</p>
-                    <span class="price">$5.00</span>
-                    <button class="primary-btn">Add to cart</button>
+                <section class="donut-card__body-text">
+                    <h3 class="donut-card__name">Chocolate Glazed</h3>
+                    <p class="donut-card__description">Chocolate dipped donut</p>
+                    <span class="donut-card__price">$5.00</span>
+                    <!-- <button class="primary-btn">Add to cart</button> -->
+                    <a href="#" class="primary-btn" target="_blank" data-toggle="modal" data-target="#cartModal">Add
+                        to Cart</a>
                 </section>
             </article>
-
+            <!--donut 5-->
             <article class="donut-card">
                 <header>
-                    <img class="card-display" src="/images/donut2.jpg">
+                    <img class="donut-card__img" src="/images/donut1.jpg">
                 </header>
-                <section class="donut-content">
-                    <h3 class="name">Citrus Glazed</h3>
-                    <p>Lemon-lime glazed donut</p>
-                    <span class="price">$5.00</span>
-                    <button>Add to cart</button>
+                <section class="donut-card__body-text">
+                    <h3 class="donut-card__name">Chocolate Glazed</h3>
+                    <p class="donut-card__description">Chocolate dipped donut</p>
+                    <span class="donut-card__price">$5.00</span>
+                    <!-- <button class="primary-btn">Add to cart</button> -->
+                    <a href="#" class="primary-btn" target="_blank" data-toggle="modal" data-target="#cartModal">Add
+                        to Cart</a>
                 </section>
             </article>
-            <!--donut 3-->
+            <!--donut 6-->
             <article class="donut-card">
                 <header>
-                    <img class="card-display" src="/images/donut3.jpg">
+                    <img class="donut-card__img" src="/images/donut1.jpg">
                 </header>
-                <section class="donut-content">
-                    <h3 class="name">Sprinkled Madness</h3>
-                    <p>Classic honey glaze with birthday sprinkles</p>
-                    <span class="price">$5.00</span>
-                    <button>Add to cart</button>
+                <section class="donut-card__body-text">
+                    <h3 class="donut-card__name">Chocolate Glazed</h3>
+                    <p class="donut-card__description">Chocolate dipped donut</p>
+                    <span class="donut-card__price">$5.00</span>
+                    <!-- <button class="primary-btn">Add to cart</button> -->
+                    <a href="#" class="primary-btn" target="_blank" data-toggle="modal" data-target="#cartModal">Add
+                        to Cart</a>
                 </section>
             </article>
         </section>
@@ -149,20 +163,19 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!--THIS IS WHERE I NEED A TABLE-->
                     <table>
                         <thead>
                         </thead>
                         <tbody class="table">
                             <tr>
-                                <td>
-                                    <h5>Chocolate Dipped Donut</h5>
+                                <td class="name">
+                                    Chocolate Dipped Donut
                                 </td>
-                                <td>
-                                    <p>Qty: 3</p>
+                                <td class="qty">
+                                    Qty: 3
                                 </td>
-                                <td>
-                                    <p>$12.00</p>
+                                <td class="price">
+                                    $12.00
                                 </td>
                             </tr>
                         </tbody>
