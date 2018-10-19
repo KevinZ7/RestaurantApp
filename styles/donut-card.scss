@@ -1,0 +1,34 @@
+/* Donut Card CSS */
+
+
+
+.card-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.donut-card {
+    background: #ffffff;
+    flex-basis: 30%;
+    min-width: 300px;
+    margin: 0 .3em 1em .3em;
+}
+@media only screen and (max-width: 600px) {
+    .donut-card {
+        flex-basis: 100%;
+    }
+}
+
+/* image */
+.card-display {
+    width: 100%
+}
+
+.donut-content {
+    text-align: center;
+    padding: .8em;
+
+}
+
