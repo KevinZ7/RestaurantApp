@@ -19,104 +19,26 @@ app.use(express.static('public'));
 
 
 
-app.post("/orders", (req,res) => {
-  let order = req.body
-  console.log(order.cart[0].id);
-})
-
-function exitInCart(userid, itemid){
-  return knex('cart').
-
-}
-// function CheckInDB(userId, ItemID){
-//   knex.selecT('');
-
-// }
-
-app.post("/addToCart", (req,res) => {
-
-  // //Check whether the ID exists of not
-  // let id = CheckIdinDb(userId, itemID)
-  // if(id){
-  //   //it means the id already exists in the CART
-  //   //UPDATE the QUANTITY
-  // } else {
-  //   //It does not exitss
-  //   //INSERT A NEW ROW
-  // }
-
-  let itemId = req.body.item_id
-  console.log(itemId);
-
-  return knex('list_item')
-  .returning('*')
-  .insert([{
-    menu_item_id: itemId
-  }]);
-  .then(()=>{
-    return knex('cart')
-    .returning('*')
-    .insert([{
-      list_item_id:
-    }])
-
-  })
-
-})
 
 
-function existInCart(userid, itemid){
-  return knex.select('id').from("cart")
-  .where("users_id",1)
-  .andWhere("list_item_id",3)
-  .then(function(result){
-    if(result.length === 0){
-      //IT means no record exists
-      return false;
-    } else{
-      //it means a record exits
-      return true;
-    }
-    console.log("we are go some data ",result);
-  });
-}
 
 
 app.post("/addToCart", (req,res) => {
-  let itemId = req.body.item_id
-  console.log(itemId)
-  let cartItemResult = existInCart(1, itemId)
-    .then((cartItemResult) => {
-      if(cartItemResult === false){
-        return knex('cart')
-        .returning('*')
-        .insert({
-          users_id : 1,
-          list_item_id : itemId
-        })
-      } else {
-        return knex('cart')
-        .where('list_item_id', '=', itemId)
-        .increment('quantity',1)
-        }
-      });
-    res.status(202)
-  });
-
-
-  // return knex('list_item')
-  // .returning('*')
-  // .insert([{
-  //   menu_item_id: itemId
-  // }]);
-  // .then(()=>{
-  //   return knex('cart')
-  //   .returning('*')
-  //   .insert([{
-  //     list_item_id:
-  //   }])
-
+  let itemId = req.body.item_id;
+  knex('cart_line_items')
+  .returning("*")
+  .insert({
+    users_id: 1,
+    menu_items_id : itemId
+  }).then(() => {
+    res.status(201);
   })
+});
+
+
+
+
+})
 
 
 
