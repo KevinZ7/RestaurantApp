@@ -4,6 +4,9 @@ const app = express();
 const PORT = 8080;
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
+const accountSid = 'ACd728bad50e82e0eb6580df59e1a5f4eb';
+const authToken = '11bdece36506ddf4a69ac72fede9166a';
+const twilio= require('twilio')(accountSid, authToken);
 const knexConfig = require('../knexfile').development;
 const knex = require('knex')(knexConfig);
 const {Client} = require('pg');
@@ -14,12 +17,26 @@ const client = new Client({
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
+
+
+
 function addToCart(itemId,userId,res){
   knex('cart_line_items')
   .insert({
     users_id: userId,
     menu_items_id : itemId
   }).then(() => {
+
+twilio.messages.create(
+  {
+    to: '+16044410372',
+    from: '+17782007215',
+    body: 'You just added a new item to your cart!',
+  },
+  (err, message) => {
+    console.log(message.id);
+  }
+);
     res.status(201);
   })
 };
