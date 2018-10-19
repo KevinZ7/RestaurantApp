@@ -13,34 +13,47 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/donut-card.css">
+    <link rel="stylesheet" href="vendor/normalize-4.1.1.css">
 
     <title>Home Page</title>
 </head>
 
 <body>
     <!-- Top nav bar -->
-    <nav id="nav-bar">
-        <img class="logo" src="images/donut1.jpg">
-        <span class="header">Donut Party</span>
-    </nav>
+
 
     <!-- main content -->
     <main>
+
         <section class="container">
             <header class="hero-banner">
-                <h1>Goughnuts Doughnuts</h1>
+                <nav id="nav-bar">
+                    <img class="logo" src="images/donut1.jpg">
+                    <span class="header">Donut Party</span>
+                </nav>
+                <h1>Gonuts Donuts</h1>
                 <button>View Donuts</button>
             </header>
         </section>
         <!--About Section-->
         <section id="about" class="container">
-            <p>Vanilla croissant vanilla vanilla apple cake sugar pastry marzipan cake. Ipsum muffin jelly biscuit
-                ipsum biscuit tiramisu sweet apple biscuit. Pastry pastry pastry pastry sweet apple dolor sprinkles
-                ipsum dolor. Croissant croissant orange marzipan pastry lollipop sugar sprinkles ipsum biscuit.
-            </p>
+            <article>
+                <p>Vanilla croissant vanilla vanilla apple cake sugar pastry marzipan cake. Ipsum muffin jelly biscuit
+                    ipsum biscuit tiramisu sweet apple biscuit. Pastry pastry pastry pastry sweet apple dolor sprinkles
+                    ipsum dolor. Croissant croissant orange marzipan pastry lollipop sugar sprinkles ipsum biscuit.
+                </p>
+            </article>
+            <article>
+                <img class="half-img" src="images/about_img_2.jpg" alt="Donut with a bite taken out of it">
+            </article>
         </section>
 
         <!--Donut Menu-->
+        <section class="container">
+            <h2>Donuts</h2>
+            <p>Pick your donuts</p>
+        </section>
         <section class="container" id="donuts">
             <!--donut 1-->
             <article class="donut-card">
@@ -51,7 +64,7 @@
                     <h3 class="name">Chocolate Glazed</h3>
                     <p>Chocolate dipped donut</p>
                     <span class="price">$5.00</span>
-                    <button>Add to cart</button>
+                    <button class="primary-btn">Add to cart</button>
                 </section>
             </article>
             <!--donut 2-->
@@ -80,12 +93,10 @@
             </article>
         </section>
         <!--End of Donut Menu-->
-
-
     </main>
 
-
     <footer>
+        <p>Copyright Lighthouse Labbers</p>
     </footer>
 </body>
 

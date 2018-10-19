@@ -1,6 +1,16 @@
 /* Donut Card CSS */
 
 .donut-card {
-    width: 30%;
-    
+    background: #ffffff;
+    margin: .5em;
+}
+
+.card-display {
+    width: 100%
+}
+
+.donut-content {
+    text-align: center;
+    padding: .8em;
+
 }
