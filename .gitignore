@@ -1,2 +1,4 @@
 node_modules
 public/styles
+public/scss_bootstrap
+public/css
