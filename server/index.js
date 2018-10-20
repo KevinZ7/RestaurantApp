@@ -35,15 +35,27 @@ function loadOrder(){
   .asCallback()
 }
 
+function orderIdents(){
+  return knex('customer_orders')
+  .select('customer_orders.id')
+  .where({users_id: 6})
+  .asCallback()
+}
+
 
 
 //saves order from database and makes them available client side
 app.get("/orderPlaced",(req, res) =>{
   loadOrder()
     .then((items) =>{
-      console.log(items)
-      res.status(200);
-      res.json({order: items})
+      orderIdents()
+      .then((result) => {
+        res.status(200);
+        res.json({
+          order: items,
+          orderIdents: result
+        })
+      })
     })
 })
 
@@ -241,7 +253,7 @@ function loadOrder(){
   .asCallback()
 }
 
-function confirmOrder(orderId,userId,cb){
+function confirmOrder(orderId,userId){
   return knex('order_line_items')
   .where('customer_orders_id',orderId)
   .del()
@@ -249,31 +261,43 @@ function confirmOrder(orderId,userId,cb){
     knex('customer_orders')
     .where('customer_orders.id',orderId)
     .del()
-    .then(() => {
-      cb();
-    })
+    .asCallback()
   })
 }
 
 app.post("/confirmOrder", (req,res) => {
-  let orderId = Number(req.body.item_id)
+  let orderId = Number(req.body.order_id)
   let userId = 6;
 
-  confirmOrder(orderId,userId,() => {
-    res.status(201);
-    twilio.messages.create(
-      {
-        to: '+16044410372',
-        from: '+16042655347',
-        body: 'Your order has been confirmed and will be available in 15 minutes! Thank you for your purchase from Gonuts Donuts!',
-      },
-      (err, message) => {
-        console.log(message.sid);
-      }
-    );
-  });
+  confirmOrder(orderId,userId)
+  .then(()=>{
+    loadOrder()
+    .then((items) => {
+      orderIdents()
+      .then((result) => {
+        res.status(200);
+        res.json({
+          order: items,
+          orderIdents: result
+        })
+        twilio.messages.create(
+          {
+            to: '+16044410372',
+            from: '+16042655347',
+            body: 'Your order has been confirmed and will be available in 15 minutes! Thank you for your purchase from Gonuts Donuts!',
+          },
+          (err, message) => {
+            console.log(message.sid);
+          }
+        );
+      })
+    })
+  })
+
 
 })
+
+
 
 
 

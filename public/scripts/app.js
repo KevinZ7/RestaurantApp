@@ -1,29 +1,6 @@
 $(document).ready(function(){
 
   function createMenuBody(menuItem){
-<<<<<<< HEAD
-
-    let $headerContent = $('<header>');
-    let $donutImg = $('<img>').attr("src", menuItem.avatar).addClass('donut-card__img');
-    let $donutContent = $('<section>').addClass('donut-card__body-text');
-    let $donutName = $('<h3>').text(menuItem.name).addClass('donut-card__name');
-    let $donutDescription = $('<p>').text(menuItem.description).addClass('donut-card__description');
-    let $donutPrice = $('<span>').text(menuItem.price).addClass('donut-card__price');
-    let $donutCard = $('<article>').addClass('donut-card');
-    
-    $headerContent.append($donutImg);
-    $donutContent.append($donutName, $donutDescription, $donutPrice);
-    $donutCard.append($donutImg, $donutContent);
-
-    return $('#donuts').append($donutCard);
-  }
-
-
-
-
-
-
-=======
     return $('<article>').addClass("donut-card")
       .append($('<header>').append($('<img>').attr({src: menuItem.avatar}).addClass('donut-card__img')))
       .append($('<section>').addClass('donut-card__body-text')
@@ -39,7 +16,6 @@ $(document).ready(function(){
         }).text('Add to Cart')))
   }
 
->>>>>>> 156c13edad4ea31cb31e5f2c20dcfe473f37f0c3
   function renderMenu(data){
     data.forEach((menuItem) =>{
       $('.card-layout').append(createMenuBody(menuItem))
@@ -169,16 +145,41 @@ $(document).ready(function(){
 
 
   function renderOrderBody(orderInfo){
-    return $('<div>').addClass('confirmOrder')
-    .append($('<p>').text(orderInfo.name))
-    .append($('<p>').text(orderInfo.phone))
-    .append($('<p>').text(orderInfo.customer_orders_id))
-    .append($('<p>').text(orderInfo.count))
+    return $('<tr>')
+    .append($('<td>').addClass('order-card__label').text(orderInfo.name))
+    .append($('<td>').addClass('order-card__label center').text(orderInfo.count))
+
   }
 
+
+  function renderOrderOutline(orderIdent){
+    return $('<section>').addClass('orders').attr('id',`order_${orderIdent.id}`)
+    .append($('<article>').addClass('order-card')
+       .append($('<table>').addClass('table').attr('id',`table_${orderIdent.id}`)
+        .append($('<thead>').append($('<th>').addClass('order-card__orderNum').attr({'colspan': 2}).text(`Order # ${orderIdent.id}`)))
+        .append($('<tr>').attr('id',`tr_${orderIdent.id}`)
+        .append($('<td>').addClass('order-card__label').text('Donut Type'))
+        .append($('<td>').addClass('order-card__label center').text('Quantity'))))
+        .append($('<footer>').addClass('order-card__footer')
+        .append($('<button>').addClass('order-card__btn').attr('id',`orderButton_${orderIdent.id}`).text('Confirm Order')))
+        )
+  }
+
+
+  function orderBody(data){
+    data.forEach((orderBody) =>{
+      $('div').append(renderOrderOutline(orderBody))
+    })
+  }
+
+
+
+
   function renderOrderData(data){
+    console.log(data)
     data.forEach((orderItem)=>{
-      $('section').append(renderOrderBody(orderItem))
+      let trId = orderItem.customer_orders_id;
+      $(`#table_${trId}`).append(renderOrderBody(orderItem))
     })
   }
 
@@ -186,20 +187,39 @@ $(document).ready(function(){
 
 function orderPlaced(){
    $.ajax('/orderPlaced').then((data) =>{
-   renderOrderData(data.order)
-  })
+    orderBody(data.orderIdents)
+   return data;
+   })
+   .then((result) => {
+    console.log("this is the results", result)
+    renderOrderData(result.order)
+   })
+
  }
 
 orderPlaced();
 
 
-  // $('#confirmOrder').click((event) =>{
-  //   $.ajax('/confirmOrder', {
-  //     method: 'POST',
-  //     data:
-  //   }
-  //   })
-  // })
+
+  $('orderContainer').on('click','order-card__btn',(event) => {
+    let orderId = event.target.id.slice(12);
+
+    $.ajax('/confirmOrder',{
+      method: 'POST',
+      data: {
+        order_id: orderId
+      }
+      success: (val) => {
+        orderBody(val.orderIdents)
+        .then(() => {
+          renderOrderData(val.order);
+        })
+      }
+
+    })
+  })
+
+
 
 
 });
