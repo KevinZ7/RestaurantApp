@@ -37,10 +37,45 @@
                 <h1>Active Orders</h1>
             </header>
         </section>
+        <!--orders will be the empty bucket that we will append new order-cards to-->
         <section class="orders">
             <h3>Orders requiring acceptance</h3>
+            <!--Order-card will be styled to look like a card in css-->
             <article class="order-card">
-
+                <table class="table">
+                    <thead class="order-card__orderNum">
+                        Order # 1002
+                    </thead>
+                        <tr>
+                            <td class="order-card__name">
+                                Chocolate Dipped Donut
+                            </td>
+                            <td class="order-card__qty">
+                                3
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="order-card__name">
+                                Sprinkles Donut
+                            </td>
+                            <td class="order-card__qty">
+                                2
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="order-card__name">
+                                Citrus Glazed Donut
+                            </td>
+                            <td class="order-card__qty">
+                                5
+                            </td>
+                        </tr>
+                </table>
+                <form>
+                    <label>Estimated wait time:</label>
+                    <input type="text">
+                    <input type="submit" value="Accept">
+                </form>
             </article>
         </section>
     </main>
@@ -56,7 +91,7 @@
     <script src="/scripts/bootstrap-datepicker.js"></script>
     <script src="/scripts/jquery.timepicker.min.js"></script>
     <script src="/scripts/jquery.animateNumber.min.js"></script>
-    <script src="/scripts/main.js"></script>    
+    <script src="/scripts/main.js"></script>
 </body>
 
 </html>

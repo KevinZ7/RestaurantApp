@@ -1,22 +1,22 @@
 /* Cart Modal */
-.modal-body{
-    background-color: purple;
-
-}
-
-.modal-body {
+.modal-content {
 color: lightsalmon;
-    .name {
+
+&__close {
+    color: red;
+}
+    &__name {
         color: red;
     }
     
-    .qty {
+    &__qty {
         font-size: 40px;
         color: blue;
     }
     
-    .price {
+    &__price {
         color: orange;
     }
+    
 }
 
