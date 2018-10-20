@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./styles:./public/styles",
     "local": "./node_modules/.bin/nodemon -L --watch  server -e js server/index.js"
   },
   "author": "",
@@ -15,6 +16,8 @@
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.4",
     "knex": "^0.15.2",
+    "nodemon": "^1.18.4",
+    "sass": "^1.14.3",
     "pg": "^7.5.0",
     "twilio": "^3.23.1"
   }

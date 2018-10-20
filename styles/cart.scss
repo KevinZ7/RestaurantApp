@@ -1,0 +1,23 @@
+/* Cart Modal */
+.modal-content {
+    font-size: 1.5em;
+
+    &__table{
+        background: transparent;
+
+    }
+
+    &__name {
+        font-size: .8em;
+    }
+
+    &__qty {
+        font-size: .8em;
+    }
+
+    &__price {
+        font-size: .8em;
+    }
+
+}
+
