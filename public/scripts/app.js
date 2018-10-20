@@ -1,29 +1,6 @@
 $(document).ready(function(){
 
   function createMenuBody(menuItem){
-<<<<<<< HEAD
-
-    let $headerContent = $('<header>');
-    let $donutImg = $('<img>').attr("src", menuItem.avatar).addClass('donut-card__img');
-    let $donutContent = $('<section>').addClass('donut-card__body-text');
-    let $donutName = $('<h3>').text(menuItem.name).addClass('donut-card__name');
-    let $donutDescription = $('<p>').text(menuItem.description).addClass('donut-card__description');
-    let $donutPrice = $('<span>').text(menuItem.price).addClass('donut-card__price');
-    let $donutCard = $('<article>').addClass('donut-card');
-    
-    $headerContent.append($donutImg);
-    $donutContent.append($donutName, $donutDescription, $donutPrice);
-    $donutCard.append($donutImg, $donutContent);
-
-    return $('#donuts').append($donutCard);
-  }
-
-
-
-
-
-
-=======
     return $('<article>').addClass("donut-card")
       .append($('<header>').append($('<img>').attr({src: menuItem.avatar}).addClass('donut-card__img')))
       .append($('<section>').addClass('donut-card__body-text')
@@ -39,7 +16,6 @@ $(document).ready(function(){
         }).text('Add to Cart')))
   }
 
->>>>>>> 156c13edad4ea31cb31e5f2c20dcfe473f37f0c3
   function renderMenu(data){
     data.forEach((menuItem) =>{
       $('.card-layout').append(createMenuBody(menuItem))
