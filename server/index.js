@@ -1,5 +1,6 @@
 
 const express = require('express');
+const menuRoutes = express.Router();
 const app = express();
 const PORT = 8080;
 const bodyParser = require('body-parser');
@@ -7,6 +8,7 @@ const cookieSession = require('cookie-session');
 const accountSid = 'AC3fd0f60292368f6415acd32dbca3b9c9';
 const authToken = '2c9bd5dc5aef8d1295dd734ac27dda2a';
 const twilio= require('twilio')(accountSid, authToken);
+// const twiml = twilio.TwimlResponse();
 const knexConfig = require('../knexfile').development;
 const knex = require('knex')(knexConfig);
 const {Client} = require('pg');
@@ -16,6 +18,35 @@ const client = new Client({
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
+
+// app.post('/sms', function(req, res) {
+//   var twilio = require('twilio');
+//   var twiml = new twilio.TwimlResponse();
+//   twiml.message('The Robots are coming! Head for the hills!');
+//   res.writeHead(200, {'Content-Type': 'text/xml'});
+//   res.end(twiml.toString());
+// });
+
+
+
+
+
+
+
+app.get("/orderPlaced",(req, res) =>{
+  loadOrder()
+    .then((items) =>{
+      res.status(200);
+      res.json({order: items})
+    })
+})
+
+
+
+
+
+
+
 
 
 // twilio.messages.create(
@@ -55,6 +86,7 @@ function addToCart(itemId,userId,cb){
     menu_items_id : itemId
   }).then(() => {
     cb()
+
   })
 }
 
@@ -125,7 +157,6 @@ app.post("/addToCart", (req,res) => {
       res.status(201);
       res.json({cart: cart})
     })
-
   });
 });
 
@@ -200,10 +231,10 @@ function loadOrder(){
   .asCallback()
 }
 
-loadOrder()
-.then((result) => {
-  console.log(result);
-})
+// loadOrder()
+// .then((result) => {
+//   console.log(result);
+// })
 
 
 
