@@ -231,22 +231,7 @@ function loadOrder(){
   .asCallback()
 }
 
-// loadOrder()
-// .then((result) => {
-//   console.log(result);
-// })
 
-
-
-// //saves order from database and makes them available client side
-// app.get("/orderPlaced",(req, res) =>{
-//   loadOrder()
-//     .then((items) =>{
-//       console.log(items)
-//       // res.status(200);
-//       // res.json({order: items})
-//     })
-// })
 
 
 
