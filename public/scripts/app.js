@@ -1,6 +1,28 @@
 $(document).ready(function(){
 
-  var cart = [];
+  function createMenuBody(menuItem){
+   return $('<p>').text(menuItem.name).append($("<p>").text(menuItem.description))
+   .append($('<p>').text(menuItem.price))
+  }
+
+
+
+  function renderMenu(data){
+    data.forEach((menuItem) =>{
+      $('.itemsInMenu').append(createMenuBody(menuItem))
+    })
+  }
+
+  function loadMenu(){
+    $.ajax('/items').then((response) =>{
+      renderMenu(response.menu);
+    })
+  }
+
+  loadMenu();
+
+
+
 
   $(".orderButtons").click((event) => {
     let itemId = event.target.id;
@@ -16,48 +38,30 @@ $(document).ready(function(){
         $('footer').remove();
         var cart = val.cart;
         var total = 0;
-
         cart.forEach((cartItem, i) =>{
           total += Number(cartItem.sum)/100;
-          $('div').append($('<p>').text(cartItem.id).append($('<button>').addClass("deletButtons").attr('id','delete_'+cartItem.id).text("delete"))
-            .append($('<p>').text(cartItem.name)).append($('<p>').text(cartItem.count)))
-        })
-
-
-
-        $('div').append($('<footer>').text(`price: $ ${total}`));
-
-
-
-
-        // console.log(val.cart);
-      }
-    })
-
-
-
-    // var found = false;
-    // cart.forEach(function(item){
-    //   if(item.id === event.target.id){
-    //     item.quantity += 1;
-    //     found = true;
-    //   }
-    // })
-
-    // if(found === false){
-    //   cart.push({
-    //     id: event.target.id,
-    //     quantity: 1
-    //   });
-    // }
+          $(".modal-body").append($('<table>').addClass('table')
+            .append($('<tr>')
+              .append($('<td>').addClass('name').text(cartItem.name))
+              .append($('<td>').addClass('qty').text(`QTY:${cartItem.count}`))
+              .append($('<td>').addClass('price').text(`Price: $${cartItem.price}`))
+              ))
+           })
+        $('.modal-body').append($('<footer>').text(`price: $ ${total}`));
+        }
+      })
   });
 
 
   $(".submitOrder").click((event) =>{
-
     $.ajax('/addToOrder', {
-      method: "POST"
+      method: "POST",
     })
+  })
+
+
+  $.ajax('/admin').then((data) =>{
+    console.log(data)
 
   })
 
@@ -70,66 +74,6 @@ $(document).ready(function(){
 
 
 
-// $(".orderButtons").on("click", ()=>{
-
-//   i
-
-//   cart.forEach(function(item){
-//     if(item.id === 1){
-//       item.quantity += 1;
-//       found = true;
-//     }
-//   })
-
-//   if(found === false){
-//     cart.push({
-//       id: 1,
-//       quantity: 1
-//     });
-//   }
-
-
-//   // cart.push({
-//   //   id: 1,
-//   //   quantity: 1
-//   // });
-
-//   console.log(cart);
-// })
-
-// $("#2").on("click", ()=>{
-
-//   var found = false;
-
-//   cart.forEach(function(item){
-//     if(item.id === 2){
-//       item.quantity += 1;
-//       found = true;
-//     }
-//   })
-
-//   if(found === false){
-//     cart.push({
-//       id: 2,
-//       quantity: 1
-//     });
-//   }
-
-
-  // cart.push({
-  //   id: 1,
-  //   quantity: 1
-  // });
-
-//   console.log(cart);
-// })
-
-
-
-
-
-
-  // alert("i am on the page!")
 
 
 

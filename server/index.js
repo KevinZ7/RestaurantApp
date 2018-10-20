@@ -1,5 +1,6 @@
 
 const express = require('express');
+const menuRoutes = express.Router();
 const app = express();
 const PORT = 8080;
 const bodyParser = require('body-parser');
@@ -26,11 +27,57 @@ app.use(express.static('public'));
 //   res.end(twiml.toString());
 // });
 
-app.get('/cart', (req, res) =>{
-let cartData = getCart(1);
+//function which queiries database and saves menu items
+function loadMenuItems(){
+  return knex('menu_items')
+  .select('*')
+  .then((data) =>{
+   return data;
+  })
+}
+//function which queiries database and saves new order
+function loadOrder(){
+  return knex('cart_line_items')
+  .join('menu_items', 'menu_items_id', '=', 'menu_items.id')
+  .select('menu_items.name','users.name','users.phone')
+  .count('*')
+  .sum('menu_items.price')
+  .where({
+    users_id: userId
+  })
+  .groupBy('menu_items.id')
+  .asCallback((err,result) => {
+   return result;
+  })
+}
 
-  res.send(cartData)
+
+
+app.get("/orderPlaced",(req, res) =>{
+  loadMenuItems()
+    .then((items) =>{
+      res.status(200);
+      res.json({order: items})
+    })
 })
+
+
+
+//saves items from database and makes them available client side
+app.get("/items",function(req,res){
+  loadMenuItems()
+    .then((cart) => {
+      res.status(200);
+      res.json({menu: cart})
+    })
+});
+
+app.get
+
+
+
+
+
 
 
 function addToCart(itemId,userId,cb){
@@ -39,25 +86,12 @@ function addToCart(itemId,userId,cb){
     users_id: userId,
     menu_items_id : itemId
   }).then(() => {
-
-
-// twilio.messages.create(
-//   {
-//     to: '+16044410372',
-//     from: '+16042655347',
-//     body: 'You just added a new item to your cart!',
-//   },
-//   (err, message) => {
-//     console.log(message.sid);
-//   }
-// );
     cb()
 
   })
 };
 
 function getCart(userId){
-  cart = [];
   return knex('cart_line_items')
   .join('menu_items', 'menu_items_id', '=', 'menu_items.id')
   .select('menu_items.id','menu_items.name')
@@ -83,7 +117,6 @@ app.post("/addToCart", (req,res) => {
         res.status(201);
         res.json({cart: cart})
       })
-
   });
 });
 
