@@ -26,9 +26,9 @@
 
     &__label {
         font-size: .8em;
-        // text-transform: uppercase;
+        text-transform: uppercase;
         letter-spacing: .2em;
-        font-weight: 300;
+        font-weight: 700;
 
         &.center {
             text-align: center;
@@ -64,9 +64,6 @@
         font-size: .8em;
     }
 
-    &__form {
-        padding: 1em;
-    }
 
     &__footer {
         background: transparent;
