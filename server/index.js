@@ -18,15 +18,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 
-
-
-function addToCart(itemId,userId,cb){
-  return knex('cart_line_items')
-  .insert({
-    users_id: userId,
-    menu_items_id : itemId
-  }).then(() => {
-
 // twilio.messages.create(
 //   {
 //     to: '+16044410372',
@@ -37,14 +28,55 @@ function addToCart(itemId,userId,cb){
 //     console.log(message.sid);
 //   }
 // );
+
+
+function getCartLineItem(itemId,userId){
+  return knex('cart_line_items')
+  .select('id')
+  .where({
+    menu_items_id : itemId,
+    users_id : userId
+  })
+  .limit(1)
+}
+// testing purposes:
+// getCartLineItem(1,1)
+// .then((result) => {
+//   console.log(result[0].id);
+//   console.log(typeof(result[0].id));
+// })
+
+
+
+function addToCart(itemId,userId,cb){
+  return knex('cart_line_items')
+  .insert({
+    users_id: userId,
+    menu_items_id : itemId
+  }).then(() => {
     cb()
   })
-};
+}
+
+
+function removeFromCart(itemId,userId,cb){
+  return getCartLineItem(itemId,userId)
+  .then((result) => {
+    let tableId = result[0].id;
+    knex('cart_line_items')
+    .where('id',tableId)
+    .del()
+    .asCallback((err) => {
+      cb();
+    })
+  })
+
+}
 
 function getCart(userId){
   return knex('cart_line_items')
   .join('menu_items', 'menu_items_id', '=', 'menu_items.id')
-  .select('menu_items.id','menu_items.name')
+  .select('menu_items.id','menu_items.name','menu_items.avatar')
   .count('*')
   .sum('menu_items.price')
   .where({
@@ -56,33 +88,51 @@ function getCart(userId){
   })
 }
 
+function getCartItems(userId){
+  return knex('cart_line_items')
+  .join('menu_items','menu_items_id', '=', 'menu_items.id')
+  .select('menu_items.id')
+  .where({
+    users_id: userId
+  })
+  .asCallback((err,result) => {
+    return result;
+  })
+
+}
 
 
+app.post("/removeFromCart", (req,res) => {
+  let itemId = Number(req.body.item_id)
+  let userId = 1;
 
+  removeFromCart(itemId,userId,() => {
+    getCart(userId)
+    .then((cart) => {
+      res.status(201);
+      res.json({cart: cart})
+    })
+  });
 
-
-
-
-
+})
 
 app.post("/addToCart", (req,res) => {
   let itemId = req.body.item_id;
   let userId = 1;
   addToCart(itemId,userId,() => {
     getCart(userId)
-      .then((cart) => {
-        res.status(201);
-        res.json({cart: cart})
-      })
+    .then((cart) => {
+      res.status(201);
+      res.json({cart: cart})
+    })
 
   });
 });
 
 
-
 app.post("/addToOrder", (req,res) => {
   let userId = 1;
-  getCart(userId)
+  getCartItems(userId)
   .then((result) => {
 
     knex('customer_orders')
@@ -110,6 +160,62 @@ app.post("/addToOrder", (req,res) => {
     })
   })
 });
+
+
+//function which queiries database and saves menu items
+function loadMenuItems(){
+  return knex('menu_items')
+  .select('*')
+  .then((data) =>{
+   return data;
+  })
+}
+
+
+//saves items from database and makes them available client side
+app.get("/items",function(req,res){
+  loadMenuItems()
+    .then((cart) => {
+      res.status(200);
+      res.json({menu: cart})
+    })
+});
+
+
+
+
+
+
+
+
+//function which queiries database and saves new order
+function loadOrder(){
+  return knex('order_line_items')
+  .join('customer_orders', 'customer_orders_id', '=', 'customer_orders.id')
+  .join('menu_items','menu_items_id', '=', 'menu_items.id')
+  .join('users','users_id','=','users.id')
+  .select('users.name','users.phone','menu_items.name','menu_items.price')
+  .count('*')
+  .groupBy('menu_items.name', 'users.name', 'users.phone', 'menu_items.price')
+  .asCallback()
+}
+
+loadOrder()
+.then((result) => {
+  console.log(result);
+})
+
+
+
+// //saves order from database and makes them available client side
+// app.get("/orderPlaced",(req, res) =>{
+//   loadOrder()
+//     .then((items) =>{
+//       console.log(items)
+//       // res.status(200);
+//       // res.json({order: items})
+//     })
+// })
 
 
 

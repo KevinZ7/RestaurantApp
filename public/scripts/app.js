@@ -11,6 +11,34 @@ $(document).ready(function(){
         item_id: itemId
       },
       success: (val) => {
+        $('p').remove();
+        $('footer').remove();
+        var cart = val.cart;
+        var total = 0;
+
+        cart.forEach((cartItem, i) =>{
+          total += Number(cartItem.sum)/100;
+          $('div').append($('<p>').text(cartItem.id).append($('<button>').addClass("deleteButton").attr('id','delete_'+cartItem.id).text("delete"))
+            .append($('<p>').text(cartItem.name)).append($('<p>').text(cartItem.count)))
+        })
+
+        $('div').append($('<footer>').text(`price: $ ${total}`));
+
+      }
+    })
+  });
+
+  $('.cart').on('click','.deleteButton',function(event){
+    let itemId = event.target.id.slice(7);
+
+
+    $.ajax('/removeFromCart', {
+      method: "POST",
+      data: {
+        item_id: itemId
+      },
+      success:(val) => {
+
         console.log(val);
         $('p').remove();
         $('footer').remove();
@@ -19,38 +47,18 @@ $(document).ready(function(){
 
         cart.forEach((cartItem, i) =>{
           total += Number(cartItem.sum)/100;
-          $('div').append($('<p>').text(cartItem.id).append($('<button>').addClass("deletButtons").attr('id','delete_'+cartItem.id).text("delete"))
+          $('div').append($('<p>').text(cartItem.id).append($('<button>').addClass("deleteButton").attr('id','delete_'+cartItem.id).text("delete"))
             .append($('<p>').text(cartItem.name)).append($('<p>').text(cartItem.count)))
         })
 
 
 
         $('div').append($('<footer>').text(`price: $ ${total}`));
-
-
-
-
-        // console.log(val.cart);
       }
     })
-
-
-
-    // var found = false;
-    // cart.forEach(function(item){
-    //   if(item.id === event.target.id){
-    //     item.quantity += 1;
-    //     found = true;
-    //   }
-    // })
-
-    // if(found === false){
-    //   cart.push({
-    //     id: event.target.id,
-    //     quantity: 1
-    //   });
-    // }
   });
+
+
 
 
   $(".submitOrder").click((event) =>{
@@ -60,81 +68,6 @@ $(document).ready(function(){
     })
 
   })
-
-
-
-
-
-
-
-
-
-
-// $(".orderButtons").on("click", ()=>{
-
-//   i
-
-//   cart.forEach(function(item){
-//     if(item.id === 1){
-//       item.quantity += 1;
-//       found = true;
-//     }
-//   })
-
-//   if(found === false){
-//     cart.push({
-//       id: 1,
-//       quantity: 1
-//     });
-//   }
-
-
-//   // cart.push({
-//   //   id: 1,
-//   //   quantity: 1
-//   // });
-
-//   console.log(cart);
-// })
-
-// $("#2").on("click", ()=>{
-
-//   var found = false;
-
-//   cart.forEach(function(item){
-//     if(item.id === 2){
-//       item.quantity += 1;
-//       found = true;
-//     }
-//   })
-
-//   if(found === false){
-//     cart.push({
-//       id: 2,
-//       quantity: 1
-//     });
-//   }
-
-
-  // cart.push({
-  //   id: 1,
-  //   quantity: 1
-  // });
-
-//   console.log(cart);
-// })
-
-
-
-
-
-
-  // alert("i am on the page!")
-
-
-
-
-
 
 
 });
