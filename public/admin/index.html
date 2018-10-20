@@ -9,7 +9,8 @@
     <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Copse|Work+Sans:400,700" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="/styles/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/open-iconic-bootstrap.min.css"> -->
     <!--Internal CSS-->
@@ -35,54 +36,99 @@
                 <nav id="nav-bar">
                     <a class="navbar-brand" href="/index.html">Donut Party</a>
                 </nav>
-                <h1>Active Orders</h1>
+                <h1 class="hero-banner__title">Active Orders</h1>
             </header>
         </section>
         <!--orders will be the empty bucket that we will append new order-cards to-->
+        <h3 class="orders__title">Orders requiring acceptance</h3>
+
         <section class="orders">
-            <h3>Orders requiring acceptance</h3>
-            <!--Order-card will be styled to look like a card in css-->
-            <article class="order-card">
+            <!--Order Card 1-->
+            <article id="order-card" class="order-card">
                 <table class="table">
-                    <thead class="order-card__orderNum">
-                        Order # 1002
+                    <thead>
+                        <th colspan="2" class="order-card__orderNum">Order # 1002</th>
                     </thead>
-                        <tr>
-                            <td class="order-card__name">
-                                Chocolate Dipped Donut
+                    <tr>
+                            <td class="order-card__label">
+                                Donut type
                             </td>
-                            <td class="order-card__qty">
-                                3
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="order-card__name">
-                                Sprinkles Donut
-                            </td>
-                            <td class="order-card__qty">
-                                2
+                            <td class="order-card__label center">
+                                Quantity
                             </td>
                         </tr>
-                        <tr>
-                            <td class="order-card__name">
-                                Citrus Glazed Donut
-                            </td>
-                            <td class="order-card__qty">
-                                5
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="order-card__name">
+                            Chocolate Dipped Donut
+                        </td>
+                        <td class="order-card__qty">
+                            3
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="order-card__name">
+                            Sprinkles Donut
+                        </td>
+                        <td class="order-card__qty">
+                            2
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="order-card__name">
+                            Citrus Glazed Donut
+                        </td>
+                        <td class="order-card__qty">
+                            5
+                        </td>
+                    </tr>
                 </table>
-                <form>
+                <form class="order-card__form">
                     <label class="order-card__estimate">Estimated wait time:</label>
                     <input type="text">
-                    <input class= "order-card__btn" type="submit" value="Accept">
+                    <input class="order-card__btn" type="submit" value="Accept Order">
                 </form>
+
+            </article>
+            <!--Order Card 2-->
+            <article id="order-card" class="order-card">
+                <table class="table">
+                    <thead>
+                        <th colspan="2" class="order-card__orderNum">Order # 1002</th>
+                    </thead>
+                    <tr>
+                        <td class="order-card__name">
+                            Sprinkles Donut
+                        </td>
+                        <td class="order-card__qty">
+                            2
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="order-card__name">
+                            Citrus Glazed Donut
+                        </td>
+                        <td class="order-card__qty">
+                            5
+                        </td>
+                    </tr>
+                </table>
+                <form class="order-card__form">
+                    <label class="order-card__estimate">Estimated wait time:</label>
+                    <input type="text">
+                    <input class="order-card__btn" type="submit" value="Accept Order">
+                </form>
+
             </article>
         </section>
+
+
     </main>
 
+    <footer>
+        <p>Copyright Lighthouse Labbers</p>
+    </footer>
     <!-- JS -->
-    <script src="/scripts/jquery.min.js"></script>
+    <!-- <script src="/scripts/jquery.min.js"></script>
     <script src="/scripts/popper.min.js"></script>
     <script src="/scripts/bootstrap.min.js"></script>
     <script src="/scripts/jquery.easing.1.3.js"></script>
@@ -92,7 +138,11 @@
     <script src="/scripts/bootstrap-datepicker.js"></script>
     <script src="/scripts/jquery.timepicker.min.js"></script>
     <script src="/scripts/jquery.animateNumber.min.js"></script>
-    <script src="/scripts/main.js"></script>
+    <script src="/scripts/main.js"></script> -->
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
 </body>
 
 </html>

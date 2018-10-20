@@ -1,28 +1,91 @@
+/* Active Orders Admin Page */
+
+/* section for the orders */
+.orders {
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    &__title {
+        font-size: 2em;
+        text-align: center;
+        padding: 1em;
+    }
+}
+
+/* indivdual order card */
 .order-card {
-    background-color: #fff;
+    background: #ffffff;
+    flex-basis: 80%;
+    margin: 0 .5em 1em .5em;
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: .1em;
+
+    &__label {
+        font-size: .8em;
+        // text-transform: uppercase;
+        letter-spacing: .2em;
+        font-weight: 300;
+
+        &.center {
+            text-align: center;
+        }
+    }
+
 
     &__orderNum {
-        font-size: 2em;
+        font-size: .8em;
+        text-transform: uppercase;
+        letter-spacing: .2em;
     }
 
     &__name {
-        font-size: 1.8em;
+        font-size: 1.5em;
     }
 
     &__qty {
-        font-size: 1.8em;
+        font-size: 1.5em;
+        text-align: center;
     }
 
     &____estimate {
-        font-size: 1.6em;
+        font-size: 1.4em;
     }
 
     &__btn {
-        background-color: lightcoral;
+        background-color: grey;
         color: #fff;
         text-transform: uppercase;
         font-weight: 700;
         padding: .7em;
         font-size: .8em;
+    }
+
+    &__form {
+        padding: 1em;
+    }
+
+    &__footer {
+        background: transparent;
+        float: right;
+    }
+}
+
+/* Over-ride Bootstrap styles here */
+
+.table td,
+.table th {
+    border-top: none;
+    border-bottom: 1px solid #dee2e6;
+}
+
+
+/* Breakpoints */
+@media only screen and (max-width: 500px) {
+    .order-card {
+        flex-basis: 100%;
     }
 }
