@@ -1,4 +1,11 @@
 /* main.css */
+// a {
+//     text-decoration: none;
+// }
+
+// a:hover {
+//     text-decoration: none;
+// }
 
 .hero-banner {
     /* width: 100%; */
@@ -10,6 +17,11 @@
     align-content: center;
     padding-bottom: 3em;
 
+    &.lg {
+        background-position: center bottom;
+        height: 600px;
+    }
+
     &__title {
         font-family: 'copse', serif;
         font-size: 75px;
@@ -18,6 +30,13 @@
         text-align: center;
         color: #fff;
         padding: 1em 0 .5em 0;
+
+        &.cardTitle {
+            font-size: 50px;
+            color: black;
+            padding: 0;
+
+        }
     }
 
     &__btn {
@@ -27,10 +46,31 @@
         letter-spacing: .2em;
         font-weight: 700;
         padding: 1em;
+        text-decoration: none;
     }
 
     &__btn:hover {
         background-color: rgba(255, 255, 255, 1);
         color: #000;
+        text-decoration: none;
+
     }
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    &__card {
+        background: #ffffff;
+        flex-basis: 50%;
+        margin: 5em 5em 5em 5em;
+        padding: 1em;
+        min-width: 300px;
+        box-shadow: 0 0 2em #333;
+    }
+
+    
 }

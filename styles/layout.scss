@@ -1,7 +1,36 @@
+$sans-serif: 'Work Sans',
+sans-serif;
+$serif: 'Copse',
+serif;
+
+//to-do : add variables for common colors.
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button {
+  text-decoration: none;
+  border-color: none;
+  border-style: none;
+}
+
+button:hover {
+  text-decoration: none;
+}
+
+button:focus {
+  outline: none;
+}
+
 body {
   margin: 0;
   color: #000;
-  font-family: 'Work Sans', sans-serif;
+  font-family: $sans-serif;
   background-color: #ECECE4;
 }
 
@@ -15,10 +44,10 @@ body {
 }
 
 footer {
-background: #233340;
-position: sticky;
-color: #fff;
-padding: 1em;
+  background: #233340;
+  position: sticky;
+  color: #fff;
+  padding: 1em;
 }
 
 section {
@@ -27,7 +56,7 @@ section {
 
 @media only screen and (max-width: 600px) {
   section {
-      width: 100%;
+    width: 100%;
   }
 }
 
