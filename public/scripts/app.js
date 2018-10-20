@@ -43,13 +43,46 @@ $(document).ready(function(){
         item_id: itemId
       },
       success: (val) => {
+        $('p').remove();
+        $('footer').remove();
+        var cart = val.cart;
+        var total = 0;
+         cart.forEach((cartItem, i) =>{
+          total += Number(cartItem.sum)/100;
+
+          $(".modal-body").append($('<table>').addClass('table')
+            .append($('<tr>')
+              .append($('<td>').addClass('name').text(cartItem.name))
+              .append($('<td>').addClass('qty').text(`QTY:${cartItem.count}`))
+              .append($('<td>').addClass('price').text(`Price: $${cartItem.price}`))
+              ))
+           })
+
+        $('div').append($('<footer>').text(`price: $ ${total}`));
+
+      }
+    })
+  });
+
+  $('.cart').on('click','.deleteButton',function(event){
+    let itemId = event.target.id.slice(7);
+
+    $.ajax('/removeFromCart', {
+      method: "POST",
+      data: {
+        item_id: itemId
+      },
+      success:(val) => {
+
         console.log(val);
         $('p').remove();
         $('footer').remove();
         var cart = val.cart;
         var total = 0;
+
         cart.forEach((cartItem, i) =>{
           total += Number(cartItem.sum)/100;
+
           $(".modal-body").append($('<table>').addClass('table')
             .append($('<tr>')
               .append($('<td>').addClass('name').text(cartItem.name))
@@ -69,27 +102,13 @@ $(document).ready(function(){
     })
   })
 
-
-  $.ajax('/admin').then((data) =>{
+function orderPlaced(){
+   $.ajax('/orderPlaced').then((data) =>{
     console.log(data)
-
   })
+ }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+orderPlaced();
 
 });
 
