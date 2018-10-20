@@ -19,13 +19,7 @@ const client = new Client({
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
-// app.post('/sms', function(req, res) {
-//   var twilio = require('twilio');
-//   var twiml = new twilio.TwimlResponse();
-//   twiml.message('The Robots are coming! Head for the hills!');
-//   res.writeHead(200, {'Content-Type': 'text/xml'});
-//   res.end(twiml.toString());
-// });
+
 
 //function which queiries database and saves menu items
 function loadMenuItems(){
@@ -35,32 +29,6 @@ function loadMenuItems(){
    return data;
   })
 }
-//function which queiries database and saves new order
-function loadOrder(){
-  return knex('cart_line_items')
-  .join('menu_items', 'menu_items_id', '=', 'menu_items.id')
-  .select('menu_items.name','users.name','users.phone')
-  .count('*')
-  .sum('menu_items.price')
-  .where({
-    users_id: userId
-  })
-  .groupBy('menu_items.id')
-  .asCallback((err,result) => {
-   return result;
-  })
-}
-
-
-
-app.get("/orderPlaced",(req, res) =>{
-  loadMenuItems()
-    .then((items) =>{
-      res.status(200);
-      res.json({order: items})
-    })
-})
-
 
 
 //saves items from database and makes them available client side
@@ -72,7 +40,29 @@ app.get("/items",function(req,res){
     })
 });
 
-app.get
+//function which queiries database and saves new order
+function loadOrder(){
+  return knex('order_line_items')
+  .join('customer_orders', 'customer_orders_id', '=', 'customer_orders.id')
+  .join('menu_items','menu_items_id', '=', 'menu_items.id')
+  .join('users','users_id','=','users.id')
+  .select('users.name','users.phone','menu_items.name','menu_items.price')
+  .count('*')
+  .groupBy('menu_items.name', 'users.name', 'users.phone', 'menu_items.price')
+  .asCallback()
+}
+
+
+
+//saves order from database and makes them available client side
+app.get("/orderPlaced",(req, res) =>{
+  loadOrder()
+    .then((items) =>{
+      console.log(items)
+      // res.status(200);
+      // res.json({order: items})
+    })
+})
 
 
 

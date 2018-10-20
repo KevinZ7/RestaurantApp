@@ -1,11 +1,21 @@
 $(document).ready(function(){
 
   function createMenuBody(menuItem){
-   return $('<p>').text(menuItem.name).append($("<p>").text(menuItem.description))
-   .append($('<p>').text(menuItem.price))
+
+    let $headerContent = $('<header>');
+    let $donutImg = $('<img>').attr("src", menuItem.avatar).addClass('donut-card__img');
+    let $donutContent = $('<section>').addClass('donut-card__body-text');
+    let $donutName = $('<h3>').text(menuItem.name).addClass('donut-card__name');
+    let $donutDescription = $('<p>').text(menuItem.description).addClass('donut-card__description');
+    let $donutPrice = $('<span>').text(menuItem.price).addClass('donut-card__price');
+    let $donutCard = $('<article>').addClass('donut-card');
+
+    $headerContent.append($donutImg);
+    $donutContent.append($donutName, $donutDescription, $donutPrice);
+    $donutCard.append($donutImg, $donutContent);
+
+    return $donutCard;
   }
-
-
 
   function renderMenu(data){
     data.forEach((menuItem) =>{
