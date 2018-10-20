@@ -1,0 +1,28 @@
+.order-card {
+    background-color: #fff;
+
+    &__orderNum {
+        font-size: 2em;
+    }
+
+    &__name {
+        font-size: 1.8em;
+    }
+
+    &__qty {
+        font-size: 1.8em;
+    }
+
+    &____estimate {
+        font-size: 1.6em;
+    }
+
+    &__btn {
+        background-color: lightcoral;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: .7em;
+        font-size: .8em;
+    }
+}
