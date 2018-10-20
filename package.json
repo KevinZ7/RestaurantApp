@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "local": "./node_modules/.bin/nodemon --watch server -e js server/index.js",
-    "sass": "sass --watch ./styles:./public/styles"
+    "sass": "sass --watch ./styles:./public/styles",
+    "local": "./node_modules/.bin/nodemon -L --watch  server -e js server/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,7 +17,8 @@
     "express": "^4.16.4",
     "knex": "^0.15.2",
     "nodemon": "^1.18.4",
+    "sass": "^1.14.3",
     "pg": "^7.5.0",
-    "sass": "^1.14.3"
+    "twilio": "^3.23.1"
   }
 }
