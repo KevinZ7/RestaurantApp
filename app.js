@@ -8,20 +8,17 @@ $(document).ready(function () {
 
     function createDonutCard(...donutData...) {
 
-        // Render Dount Card to page
-
-
         //header data
         let $headerContent = $('<header>');
-        let $donutImg = $('<img>').attr("src", ...).addClass('card-display');
+        let $donutImg = $('<img>').attr("src", ...).addClass('donut-card__img');
         //compile header
         $headerContent.append($donutImg);
 
         //section data
-        let $donutContent = $('<section>').addClass('donut-content');
-        let $donutName = $('<h3>').text(...).addClass('');
-        let $donutDescription = $('<p>').text(...).addClass('');
-        let $donutPrice = $('<span>').text(...).addClass('');
+        let $donutContent = $('<section>').addClass('donut-card__body-text');
+        let $donutName = $('<h3>').text(...).addClass('donut-card__name');
+        let $donutDescription = $('<p>').text(...).addClass('donut-card__description');
+        let $donutPrice = $('<span>').text(...).addClass('donut-card__price');
         //compile section
         $donutContent.append($donutName, $donutDescription, $donutPrice);
 

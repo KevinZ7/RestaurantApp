@@ -1,22 +1,23 @@
 /* Cart Modal */
 .modal-content {
-color: lightsalmon;
+    font-size: 1.5em;
 
-&__close {
-    color: red;
-}
+    &__table{
+        background: transparent;
+
+    }
+
     &__name {
-        color: red;
+        font-size: .8em;
     }
-    
+
     &__qty {
-        font-size: 40px;
-        color: blue;
+        font-size: .8em;
     }
-    
+
     &__price {
-        color: orange;
+        font-size: .8em;
     }
-    
+
 }
 

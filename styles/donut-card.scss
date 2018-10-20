@@ -18,7 +18,7 @@ a:hover {
     background: #ffffff;
     flex-basis: 30%;
     min-width: 300px;
-    margin: 0 .3em 1em .3em;
+    margin: 0 .5em 1em .5em;
 
     &__img {
         width: 100%
@@ -26,38 +26,40 @@ a:hover {
 
     &__body-text {
         text-align: center;
-        padding: .8em;
+        padding: 2em;
     }
 
     &__name {
-        color: red;
+        font-size: 1.75em;
     }
 
     &__price {
-        color: purple;
+        font-size: 1em;
+        font-weight: 700;
     }
 
     &__description {
-        color: green;
+        font-size: 1em;
     }
 
     &__btn {
-        background-color: red;
-        color: #fff;
+        background-color:grey;
+        color:#fff;
         text-transform: uppercase;
-        // letter-spacing: .2em;
         font-weight: 700;
-        padding: .5em;
+        padding: .7em;
+        font-size: .8em;
     }
 
     &__btn:hover {
-        background-color: green;
+
+        background-color: rgba(128, 128, 128, 0.5);
         color: #000;
     }
 
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
     .donut-card {
         flex-basis: 100%;
     }
