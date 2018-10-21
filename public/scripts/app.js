@@ -90,11 +90,11 @@ $(document).ready(function () {
 
           $(".modal-body").append($('<table>').addClass('table')
             .append($('<tr>')
-              .append($('<td>').addClass('name').text(cartItem.name))
-              .append($('<td>').addClass('qty').text(cartItem.count))
+              .append($('<td>').text(cartItem.name))
+              .append($('<td>').text(cartItem.count))
               .append($('<td><button></td>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("-"))
               .append($('<td><button></td>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("+"))
-              .append($('<td>').addClass('price').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
+              .append($('<td>').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
             ))
         })
         $('.modal-body').append($('<footer>').text(`Total $${(total).toFixed(2)}`).addClass('modal-content__footer'));
@@ -123,11 +123,11 @@ $(document).ready(function () {
 
           $(".modal-body").append($('<table>').addClass('table')
             .append($('<tr>')
-              .append($('<td>').addClass('name').text(cartItem.name))
-              .append($('<td>').addClass('qty').text($cartItem.count))
+              .append($('<td>').text(cartItem.name))
+              .append($('<td>').text(cartItem.count))
               .append($('<td><button></td>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("-"))
               .append($('<td><button></td>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("+"))
-              .append($('<td>').addClass('price').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
+              .append($('<td>').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
             ))
         })
         $('.modal-body').append($('<footer>').text(`Total $${(total).toFixed(2)}`).addClass('modal-content__footer'));
@@ -148,117 +148,7 @@ $(document).ready(function () {
 
 
 
-  //HERE
-  // $('.card-layout').on('click', '.donut-card__btn', (event) => {
-  //   let itemId = event.target.id;
-  //   console.log(itemId);
-
-  //   $.ajax('/addToCart', {
-  //     method: "POST",
-  //     data: {
-  //       item_id: itemId
-  //     },
-  //     success: (val) => {
-  //       $('#modal-table').remove();
-  //       $('#modal-footer').remove();
-  //       var cart = val.cart;
-  //       var total = 0;
-  //       cart.forEach((cartItem, i) => {
-  //         total += Number(cartItem.sum) / 100;
-
-  //         $("#modal-body").append($('<table>').addClass('table')
-  //           .append($('<tr>')
-  //             .append($('<td>').text(cartItem.name))
-  //             .append($('<td>').text(`${cartItem.count}`))
-  //             .append($('<td><button></td>').attr('id', `minus_${cartItem.id}`).addClass('modal-content__qtyBtn').text("-"))
-  //             .append($('<td><button></td>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("+"))
-  //             .append($('<td>').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
-  //           ))
-  //       })
-
-  //       $('#modal-body').append($('<footer>').text(`Total $${(total).toFixed(2)}`).addClass('modal-content__footer'));
-
-  //     }
-  //   })
-  // });
-
-  // $('#modal-body').on('click', '#deleteOne', function (event) {
-  //   let itemId = event.target.id.slice(6);
-
-  //   $.ajax('/removeFromCart', {
-  //     method: "POST",
-  //     data: {
-  //       item_id: itemId
-  //     },
-  //     success: (val) => {
-
-  //       console.log(val);
-  //       $('#modal-table').remove();
-  //       $('#modal-footer').remove();
-  //       var cart = val.cart;
-  //       var total = 0;
-
-  //       cart.forEach((cartItem, i) => {
-  //         total += Number(cartItem.sum) / 100;
-
-  //         $("#modal-body").append($('<table>').addClass('table')
-  //           .append($('<tr>')
-  //             .append($('<td>').text(cartItem.name))
-  //             .append($('<td>').text(`${cartItem.count}`))
-  //             .append($('<td><button></td>').attr('id', `minus_${cartItem.id}`).addClass('modal-content__qtyBtn').text("-"))
-  //             .append($('<td><button></td>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("+"))
-  //             .append($('<td>').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
-  //           ))
-  //       })
-  //       $('#modal-body').append($('<footer>').text(`Total $${(total).toFixed(2)}`).addClass('modal-content__footer'));
-  //     }
-  //   })
-  // });
-
-  // $('#modal-body').on('click', '.addOne', function (event) {
-  //   let itemId = event.target.id.slice(5);
-
-  //   $.ajax('/addToCart', {
-  //     method: "POST",
-  //     data: {
-  //       item_id: itemId
-  //     },
-  //     success: (val) => {
-
-  //       console.log(val);
-  //       $('#modal-table').remove();
-  //       $('#modal-footer').remove();
-  //       var cart = val.cart;
-  //       var total = 0;
-
-  //       cart.forEach((cartItem, i) => {
-  //         total += Number(cartItem.sum) / 100;
-
-  //         $("#modal-body").append($('<table>').addClass('table')
-  //           .append($('<tr>')
-  //             .append($('<td>').text(cartItem.name))
-  //             .append($('<td>').text(`${cartItem.count}`))
-  //             .append($('<td><button></td>').attr('id', `minus_${cartItem.id}`).addClass('modal-content__qtyBtn').text("-"))
-  //             .append($('<td><button></td>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("+"))
-  //             .append($('<td>').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
-  //           ))
-  //       })
-  //       $('#modal-body').append($('<footer>').text(`Total $${(total).toFixed(2)}`));
-  //     }
-  //   })
-  // });
-
-
-
-  // $("#submitOrder").click((event) => {
-  //   $('#modal-table').remove();
-  //   $('#modal-footer').remove().append($('<p>').text(`Your order has been placed.`));
-  //   $.ajax('/addToOrder', {
-  //     method: "POST",
-  //   })
-  // })
-
-  //HERE
+  
 
 
 
