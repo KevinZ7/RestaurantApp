@@ -1,0 +1,73 @@
+/* Favourites Page */
+
+.user {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 5em 0 1em 0;
+
+
+    &__profileContainer {
+        flex-basis: 48%;
+    }
+
+    &__textContent {
+        text-align: left;
+        align-items: center;
+        margin: 0 1em 0 1em;
+    }
+
+    /* profile img */
+    &__img {
+        width: 100%;
+        align-items: center;
+    }
+
+    &__favouriteDonuts {
+        flex-basis: 48%;
+    }
+
+    &__donutList {}
+
+
+
+    &__btn {
+        background-color: transparent;
+        color: #000;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-weight: 700;
+        padding: 1em;
+        text-decoration: none;
+        border-style: solid;
+        border-width: .1em;
+    }
+
+    &__btn:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #000;
+    }
+
+
+
+    &__body {
+        margin-bottom: 2em;
+    }
+
+
+}
+
+
+
+
+
+
+// .col-2 {
+//     background: #ffffff;
+//     flex-basis: 30%;
+// }
+
+// .col-2-img {
+//     max-width: 200px;
+// }
