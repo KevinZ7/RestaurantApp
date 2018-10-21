@@ -146,8 +146,8 @@ $(document).ready(function(){
 
   function renderOrderBody(orderInfo){
     return $('<tr>')
-    .append($('<td>').addClass('order-card__label').text(orderInfo.name))
-    .append($('<td>').addClass('order-card__label center').text(orderInfo.count))
+    .append($('<td>').addClass('order-card__name').text(orderInfo.name))
+    .append($('<td>').addClass('order-card__qty').text(orderInfo.count))
 
   }
 
