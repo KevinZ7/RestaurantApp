@@ -8,19 +8,23 @@
     }
 
     &__name {
-        font-size: .8em;
+        font-size: .75em;
     }
 
     &__qty {
-        font-size: .8em;
+        font-size: .75em;
     }
 
     &__price {
-        font-size: .8em;
+        font-size: .57em;
     }
 
     &__qtyBtn {
-        font-size: .5em;
+        font-size: .75em;
+    }
+
+    &__footer {
+        float: right;
     }
 
 }

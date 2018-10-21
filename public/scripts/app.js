@@ -53,15 +53,15 @@ $(document).ready(function(){
 
           $(".modal-body").append($('<table>').addClass('table')
             .append($('<tr>')
-              .append($('<td>').addClass('name').text(cartItem.name))
-              .append($('<td>').addClass('qty').text(`QTY:${cartItem.count}`))
-              .append($('<td>').addClass('price').text(`Price: $${(Number(cartItem.price))/100}`))
+              .append($('<td>').addClass('modal-content__name').text(cartItem.name))
+              .append($('<td>').addClass('modal-content__qty').text(`${cartItem.count}`))
+              .append($('<td>').addClass('modal-content__price').text(`$${(Number(cartItem.price))/100}`))
               .append($('<button>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("delete"))
               .append($('<button>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("add"))
               ))
            })
 
-        $('.modal-body').append($('<footer>').text(`price: $ ${total}`));
+        $('.modal-body').append($('<footer>').text(`$${total}`).addClass('modal-content__footer'));
 
       }
     })
