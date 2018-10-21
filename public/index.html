@@ -30,7 +30,7 @@
 <body>
     <!-- main content -->
     <main>
-
+        <!--nav-->
         <section>
             <header class="hero-banner">
                 <nav class="navbar navbar-expand-lg navbar-light">
@@ -54,22 +54,33 @@
             </header>
         </section>
         <!--About Section-->
-        <section id="about">
-            <article class="col-2">
-                <p>Vanilla croissant vanilla vanilla apple cake sugar pastry marzipan cake. Ipsum muffin jelly biscuit
-                    ipsum biscuit tiramisu sweet apple biscuit. Pastry pastry pastry pastry sweet apple dolor sprinkles
-                    ipsum dolor. Croissant croissant orange marzipan pastry lollipop sugar sprinkles ipsum biscuit.
-                </p>
+        <section class="about">
+            <article class="about__imgContainer">
+                <article>
+                    <img class="about__img" src="images/about_img_2.jpg" alt="Donut with a bite taken out of it">
+                </article>
             </article>
-            <article class="col-2">
-                <img class="col-2-img" src="images/about_img_2.jpg" alt="Donut with a bite taken out of it">
+            <article class="about__textContainer">
+                <article class="about__textContent">
+                    <p class="highlight">about us</p>
+                    <h2>History Lesson</h2>
+                    <p class="about__body">Vanilla croissant vanilla vanilla apple cake sugar pastry marzipan cake. Ipsum muffin jelly
+                        biscuit ipsum biscuit tiramisu sweet apple biscuit. Pastry pastry pastry pastry sweet apple
+                        dolor
+                        sprinkles ipsum dolor. Croissant croissant orange marzipan pastry lollipop sugar sprinkles
+                        ipsum biscuit.
+                    </p>
+                    <a href="#" class="about__btn">Our Story</a>
+
+                </article>
             </article>
         </section>
 
         <!--Donut Menu Intro-->
         <section id="donut-menu" class="section-intro">
-            <h2 class="section-intro__heading">Donuts</h2>
-            <p>Pick your donuts</p>
+                <p class="highlight">sugar time</p>
+            <h2 class="section-intro__heading">Donut Menu</h2>
+            <!-- <p>Pick your donuts</p> -->
         </section>
 
         <section class="card-layout" id="donuts"></section>
@@ -95,7 +106,8 @@
                 <div class="modal-body"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Back to the donuts</button>
-                    <a href="/confirmation"><button type="button" id="submitOrder" class="btn btn-primary btn-lg btn-block">Place Order</button></a>
+                    <a href="/confirmation"><button type="button" id="submitOrder" class="btn btn-primary btn-lg btn-block">Place
+                            Order</button></a>
                 </div>
             </div>
         </div>

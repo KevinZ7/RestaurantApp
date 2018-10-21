@@ -1,11 +1,55 @@
 /* About Section */
 
-#about {
+.about {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    padding: 5em 0 1em 0;
+
+
+    &__textContainer {
+        flex-basis: 48%;
+    }
+
+    &__textContent {
+        text-align: left;
+        align-items: center;
+        margin: 0 1em 0 1em;
+    }
+
+    &__imgContainer {
+        flex-basis: 48%;
+    }
+
+    &__img {
+        width: 100%;
+        align-items: center;
+    }
+
+    &__btn {
+        background-color: transparent;
+        color: #000;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-weight: 700;
+        padding: 1em;
+        text-decoration: none;
+        border-style: solid;
+        border-width: .2em;
+    }
+
+    &__body {
+        margin-bottom: 2em;
+    }
+
+
 }
+
+
+
+
+
 
 .col-2 {
     background: #ffffff;

@@ -6,7 +6,7 @@
 
 .navbar {
     background-color: transparent;
-
+    padding: 2em 2em 0 2em;
 }
 
 .logo {
@@ -23,7 +23,7 @@
 /* bootstrap style over-rides */
 .navbar-light .navbar-nav .nav-link {
     color: rgba(255, 255, 255, .5);
-
+    font-size: 1.2em;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
