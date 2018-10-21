@@ -90,7 +90,7 @@ $(document).ready(function(){
             .append($('<tr>')
               .append($('<td>').addClass('name').text(cartItem.name))
               .append($('<td>').addClass('qty').text(`QTY:${cartItem.count}`))
-              .append($('<td>').addClass('price').text(`Price: $${cartItem.price}`))
+              .append($('<td>').addClass('price').text(`Price: $${(Number(cartItem.price))/100}`))
               .append($('<button>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("delete"))
               .append($('<button>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("add"))
               ))
@@ -123,7 +123,7 @@ $(document).ready(function(){
             .append($('<tr>')
               .append($('<td>').addClass('name').text(cartItem.name))
               .append($('<td>').addClass('qty').text(`QTY:${cartItem.count}`))
-              .append($('<td>').addClass('price').text(`Price: $${cartItem.price}`))
+              .append($('<td>').addClass('price').text(`Price: $${Number(cartItem.price)/100}`))
               .append($('<button>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("delete"))
               .append($('<button>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("add"))
               ))
@@ -137,7 +137,7 @@ $(document).ready(function(){
 
   $("#submitOrder").click((event) =>{
     $('.table').remove();
-    $('footer').remove();
+    $('footer').remove().append($('<p>').text('your order has been placed'));
     $.ajax('/addToOrder', {
       method: "POST",
     })
@@ -145,16 +145,41 @@ $(document).ready(function(){
 
 
   function renderOrderBody(orderInfo){
-    return $('<div>').addClass('confirmOrder')
-    .append($('<p>').text(orderInfo.name))
-    .append($('<p>').text(orderInfo.phone))
-    .append($('<p>').text(orderInfo.customer_orders_id))
-    .append($('<p>').text(orderInfo.count))
+    return $('<tr>')
+    .append($('<td>').addClass('order-card__label').text(orderInfo.name))
+    .append($('<td>').addClass('order-card__label center').text(orderInfo.count))
+
   }
 
+
+  function renderOrderOutline(orderIdent,orderInfo){
+    return $('<section>').addClass('orders').attr('id',`order_${orderIdent.id}`)
+    .append($('<article>').addClass('order-card')
+       .append($('<table>').addClass('table').attr('id',`table_${orderIdent.id}`)
+        .append($('<thead>').append($('<th>').addClass('order-card__orderNum').attr({'colspan': 2}).text(`Order # ${orderIdent.id}`)))
+        .append($('<tr>').attr('id',`tr_${orderIdent.id}`)
+        .append($('<td>').addClass('order-card__label').text('Donut Type'))
+        .append($('<td>').addClass('order-card__label center').text('Quantity'))))
+        .append($('<footer>').addClass('order-card__footer')
+        .append($('<button>').addClass('order-card__btn').attr('id',`orderButton_${orderIdent.id}`).text('Confirm Order')))
+        )
+  }
+
+
+  function orderBody(data){
+    return data.forEach((orderBody) =>{
+      $('.orderContainer').append(renderOrderOutline(orderBody))
+    })
+  }
+
+
+
+
   function renderOrderData(data){
+    console.log(data)
     data.forEach((orderItem)=>{
-      $('section').append(renderOrderBody(orderItem))
+      let trId = orderItem.customer_orders_id;
+      $(`#table_${trId}`).append(renderOrderBody(orderItem))
     })
   }
 
@@ -162,20 +187,38 @@ $(document).ready(function(){
 
 function orderPlaced(){
    $.ajax('/orderPlaced').then((data) =>{
-   renderOrderData(data.order)
-  })
+    orderBody(data.orderIdents)
+   return data;
+   })
+   .then((result) => {
+    console.log("this is the results", result)
+    renderOrderData(result.order)
+   })
+
  }
 
 orderPlaced();
 
 
-  // $('#confirmOrder').click((event) =>{
-  //   $.ajax('/confirmOrder', {
-  //     method: 'POST',
-  //     data:
-  //   }
-  //   })
-  // })
+
+  $('.orderContainer').on('click','.order-card__btn',(event) => {
+    let orderId = event.target.id.slice(12);
+
+    $.ajax('/confirmOrder',{
+      method: 'POST',
+      data: {
+        order_id: orderId
+      },
+      success: (val) => {
+        $('.orders').remove();
+        orderBody(val.orderIdents)
+        renderOrderData(val.order);
+      }
+
+    })
+  })
+
+
 
 
 });
