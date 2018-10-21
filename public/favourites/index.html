@@ -48,29 +48,55 @@
                         </div>
                     </div>
                 </nav>
-                <h1 class="hero-banner__title">Kevin's Donuts</h1>
+                <h1 class="hero-banner__title">Joel's Donuts</h1>
             </header>
         </section>
 
         <!--User profile-->
         <section class="user">
             <aside class="user__profileContainer">
-                <article class ="user__textContent">
-                    <img class="user__img" src="images/about_img_2.jpg" alt="Donut with a bite taken out of it">
-                    <h3>Kevin</h3>
-                    <p>Kevin loves donuts.</p>
+                <article class="user__textContent">
+                    <img class="user__img" src="/images/profile_joel.png" alt="Donut with a bite taken out of it">
+                    <h3>Joel</h3>
+                    <p>Joel loves donuts.</p>
                 </article>
             </aside>
             <article class="user__favouriteDonuts">
                 <article class="user__donutList">
                     <!--Favourite Donut List-->
                     <section id="donut-menu" class="section-intro">
-                        <p class="highlight">your favourites</p>
+                        <p class="highlight">your favourite</p>
                         <h2 class="section-intro__heading">Donuts</h2>
-                    </section>
-                    <section class="card-layout" id="donuts">
+                        <section class="user__card-layout" id="likedDonuts">
+                            <article class="donut-card">
+                                <header>
+                                    <a href="#">unlike</a>
+                                    <img class="donut-card__img" src="/images/donut2.jpg">
+                                </header>
+                                <section class="donut-card__body-text">
+                                    <h3 class="donut-card__name">Test Donut 1</h3>
+                                    <p class="donut-card__description">Chocolate dipped donut</p>
+                                    <span class="donut-card__price">$5.00</span>
+                                    <a href="#" class="donut-card__btn" target="_blank" data-toggle="modal" data-target="#cartModal">Add
+                                        to Cart</a>
+                                </section>
+                            </article>
+                            <article class="donut-card">
+                                    <header>
+                                        <a href="#">unlike</a>
+                                        <img class="donut-card__img" src="/images/donut4.jpg">
+                                    </header>
+                                    <section class="donut-card__body-text">
+                                        <h3 class="donut-card__name">Test Donut 2</h3>
+                                        <p class="donut-card__description">Chocolate dipped donut</p>
+                                        <span class="donut-card__price">$5.00</span>
+                                        <a href="#" class="donut-card__btn" target="_blank" data-toggle="modal" data-target="#cartModal">Add
+                                            to Cart</a>
+                                    </section>
+                                </article>
+                        </section>
                         <!--Donuts render here-->
- 
+
                     </section>
                 </article>
             </article>
