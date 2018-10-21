@@ -6,8 +6,8 @@ $(document).ready(function(){
       .append($('<section>').addClass('donut-card__body-text')
         .append($('<h3>').text(menuItem.name).addClass('donut-card__name'))
         .append($('<p>').text(menuItem.description).addClass('donut-card__description'))
-        .append($('<span>').text(`$${(Number(menuItem.price)/100)}`).addClass('donut-card__price'))
-        .append($('<br>')).append($('<a>').addClass('donut-card__btn').attr({
+        .append($('<p>').text(`$${(Number(menuItem.price)/100).toFixed(2)}`).addClass('donut-card__price'))
+        .append($('<a>').addClass('donut-card__btn').attr({
           id : menuItem.id,
           href: '#',
           'data-toggle' : 'modal',
