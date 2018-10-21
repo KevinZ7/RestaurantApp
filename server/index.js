@@ -266,7 +266,7 @@ function confirmOrder(orderId,userId){
 }
 
 app.post("/confirmOrder", (req,res) => {
-  let orderId = Number(req.body.order_id)
+  let orderId = req.body.order_id;
   let userId = 6;
 
   confirmOrder(orderId,userId)

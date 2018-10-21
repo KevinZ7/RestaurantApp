@@ -90,7 +90,7 @@ $(document).ready(function(){
             .append($('<tr>')
               .append($('<td>').addClass('name').text(cartItem.name))
               .append($('<td>').addClass('qty').text(`QTY:${cartItem.count}`))
-              .append($('<td>').addClass('price').text(`Price: $${cartItem.price}`))
+              .append($('<td>').addClass('price').text(`Price: $${(Number(cartItem.price))/100}`))
               .append($('<button>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("delete"))
               .append($('<button>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("add"))
               ))
@@ -123,7 +123,7 @@ $(document).ready(function(){
             .append($('<tr>')
               .append($('<td>').addClass('name').text(cartItem.name))
               .append($('<td>').addClass('qty').text(`QTY:${cartItem.count}`))
-              .append($('<td>').addClass('price').text(`Price: $${cartItem.price}`))
+              .append($('<td>').addClass('price').text(`Price: $${Number(cartItem.price)/100}`))
               .append($('<button>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("delete"))
               .append($('<button>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("add"))
               ))
@@ -137,7 +137,7 @@ $(document).ready(function(){
 
   $("#submitOrder").click((event) =>{
     $('.table').remove();
-    $('footer').remove();
+    $('footer').remove().append($('<p>').text('your order has been placed'));
     $.ajax('/addToOrder', {
       method: "POST",
     })
@@ -152,7 +152,7 @@ $(document).ready(function(){
   }
 
 
-  function renderOrderOutline(orderIdent){
+  function renderOrderOutline(orderIdent,orderInfo){
     return $('<section>').addClass('orders').attr('id',`order_${orderIdent.id}`)
     .append($('<article>').addClass('order-card')
        .append($('<table>').addClass('table').attr('id',`table_${orderIdent.id}`)
@@ -167,8 +167,8 @@ $(document).ready(function(){
 
 
   function orderBody(data){
-    data.forEach((orderBody) =>{
-      $('div').append(renderOrderOutline(orderBody))
+    return data.forEach((orderBody) =>{
+      $('.orderContainer').append(renderOrderOutline(orderBody))
     })
   }
 
@@ -201,19 +201,18 @@ orderPlaced();
 
 
 
-  $('orderContainer').on('click','order-card__btn',(event) => {
+  $('.orderContainer').on('click','.order-card__btn',(event) => {
     let orderId = event.target.id.slice(12);
 
     $.ajax('/confirmOrder',{
       method: 'POST',
       data: {
         order_id: orderId
-      }
+      },
       success: (val) => {
+        $('.orders').remove();
         orderBody(val.orderIdents)
-        .then(() => {
-          renderOrderData(val.order);
-        })
+        renderOrderData(val.order);
       }
 
     })
