@@ -44,8 +44,8 @@ $(document).ready(function(){
         item_id: itemId
       },
       success: (val) => {
-        $('.table').remove();
-        $('footer').remove();
+        $('#modal-table').remove();
+        $('#modal-footer').remove();
         var cart = val.cart;
         var total = 0;
          cart.forEach((cartItem, i) =>{
@@ -61,7 +61,7 @@ $(document).ready(function(){
               ))
            })
 
-        $('.modal-body').append($('<footer>').text(`$${total}`).addClass('modal-content__footer'));
+        $('.modal-body').append($('<footer>').text(`$${(total).toFixed(2)}`).addClass('modal-content__footer'));
 
       }
     })

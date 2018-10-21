@@ -100,40 +100,41 @@
     </main>
 
     <footer class="footer-global">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large
-            modal</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Launch demo modal
+                  </button>
 
         <p>Copyright Lighthouse Labbers</p>
     </footer>
 
     <!--Cart Modal-->
-    <div class="modal fade bd-example-modal-lg" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="largeCartModal"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel">Your Cart </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <table class="table">
+                <div id="modal-body" class="modal-body">
+                    <table id="modal-table" class="table">
 
                         <tr>
                             <td class="modal-content__name">
                                 Chocolate Dipped Donut
                             </td>
                             <td class="modal-content__qty">
-                                Qty: 3
-                            </td>
-                            <td class="modal-content__price">
-                                $12.00
+                                33
                             </td>
                             <td>
                                 <a href="#" class="modal-content__qtyBtn">+</a>
                                 <a href="#" class="modal-content__qtyBtn">-</a>
                             </td>
+                            <td class="modal-content__price">
+                                $12.00
+                            </td>
+
                         </tr>
 
                         <tr>
@@ -143,18 +144,20 @@
                             <td class="modal-content__qty">
                                 4
                             </td>
-                            <td class="modal-content__price">
-                                $16.00
-                            </td>
                             <td>
                                 <a href="#" class="modal-content__qtyBtn">+</a>
                                 <a href="#" class="modal-content__qtyBtn">-</a>
                             </td>
+                            <td class="modal-content__price">
+                                $16.00
+                            </td>
+
                         </tr>
                     </table>
+                    <footer class="modal-content__footer">Total: $19</footer>
                 </div>
-                <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Back to the donuts</button> -->
+                <div id="#modal-footer" class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Back to the donuts</button>
                     <button type="button" class="modal-content__btn">Place Order</button>
                 </div>
             </div>
