@@ -2,7 +2,7 @@ $(document).ready(function () {
 
   function createMenuBody(menuItem) {
     return $('<article>').addClass("donut-card")
-      .append($('<header>').append(($('<div>').addClass('donut-card__iconContainer').append($('<i>').addClass('fas fa-heart')).append($('<img>').attr({
+      .append($('<header>').append(($('<div>').addClass('donut-card__iconContainer').append($('<i>').addClass('fas fa-heart').attr('id',`like_button_${menuItem.id}`)).append($('<img>').attr({
         src: menuItem.avatar
       }).addClass('donut-card__img')))))
       .append($('<section>').addClass('donut-card__body-text')
@@ -53,13 +53,13 @@ $(document).ready(function () {
           total += Number(cartItem.sum) / 100;
 
           $("#modal-table").append($('<tr>')
-              .append($('<td>').text(cartItem.name))
-              .append($('<td>').text(cartItem.count))
-              .append($('<td><button></td>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("-"))
-              .append($('<td><button></td>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("+"))
-              .append($('<td>').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
+            .append($('<td>').text(cartItem.name))
+            .append($('<td>').text(cartItem.count))
+            .append($('<td><button></td>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("-"))
+            .append($('<td><button></td>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("+"))
+            .append($('<td>').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
 
-            )
+          )
         })
 
         $('.modal-body').append($('<footer>').text(`Total $${(total).toFixed(2)}`).addClass('modal-content__footer'));
@@ -88,12 +88,12 @@ $(document).ready(function () {
           total += Number(cartItem.sum) / 100;
 
           $("#modal-table").append($('<tr>')
-              .append($('<td>').text(cartItem.name))
-              .append($('<td>').text(cartItem.count))
-              .append($('<td><button></td>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("-"))
-              .append($('<td><button></td>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("+"))
-              .append($('<td>').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
-            )
+            .append($('<td>').text(cartItem.name))
+            .append($('<td>').text(cartItem.count))
+            .append($('<td><button></td>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("-"))
+            .append($('<td><button></td>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("+"))
+            .append($('<td>').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
+          )
         })
         $('.modal-body').append($('<footer>').text(`Total $${(total).toFixed(2)}`).addClass('modal-content__footer'));
       }
@@ -120,12 +120,12 @@ $(document).ready(function () {
           total += Number(cartItem.sum) / 100;
 
           $("#modal-table").append($('<tr>')
-              .append($('<td>').text(cartItem.name))
-              .append($('<td>').text(cartItem.count))
-              .append($('<td><button></td>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("-"))
-              .append($('<td><button></td>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("+"))
-              .append($('<td>').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
-            )
+            .append($('<td>').text(cartItem.name))
+            .append($('<td>').text(cartItem.count))
+            .append($('<td><button></td>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("-"))
+            .append($('<td><button></td>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("+"))
+            .append($('<td>').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
+          )
         })
         $('.modal-body').append($('<footer>').text(`Total $${(total).toFixed(2)}`).addClass('modal-content__footer'));
       }

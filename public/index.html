@@ -1,5 +1,3 @@
-<!-- HomePage by Andrea -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +10,10 @@
     <!-- Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
+
 
     <link rel="stylesheet" type="text/css" href="/styles/layout.css">
     <link rel="stylesheet" type="text/css" href="/styles/main.css">
@@ -45,7 +47,7 @@
                             <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
                             <a class="nav-item nav-link" href="/favourites">Favourites</a>
                             <a class="nav-item nav-link" href="/admin">Admin</a>
-                            <a class= "nav-item nav-link" target="_blank" data-toggle="modal" data-target="#cartModal">Cart</a>
+                            <a class="nav-item nav-link" target="_blank" data-toggle="modal" data-target="#cartModal">Cart</a>
                         </div>
                     </div>
                 </nav>
@@ -65,7 +67,8 @@
                 <article class="about__textContent">
                     <p class="highlight">about us</p>
                     <h2>History Lesson</h2>
-                    <p class="about__body">Vanilla croissant vanilla vanilla apple cake sugar pastry marzipan cake. Ipsum muffin jelly
+                    <p class="about__body">Vanilla croissant vanilla vanilla apple cake sugar pastry marzipan cake.
+                        Ipsum muffin jelly
                         biscuit ipsum biscuit tiramisu sweet apple biscuit. Pastry pastry pastry pastry sweet apple
                         dolor
                         sprinkles ipsum dolor. Croissant croissant orange marzipan pastry lollipop sugar sprinkles
@@ -79,27 +82,12 @@
 
         <!--Donut Menu Intro-->
         <section id="donut-menu" class="section-intro">
-                <p class="highlight">sugar time</p>
+            <p class="highlight">sugar time</p>
             <h2 class="section-intro__heading">Donut Menu</h2>
             <!-- <p>Pick your donuts</p> -->
         </section>
 
         <section class="card-layout" id="donuts">
-
-                <article class="donut-card">
-                        <header>
-                            <a class="like_button" id="like_button_13" href="#">like</a>
-                            <img class="donut-card__img" src="/images/donut1.jpg">
-                        </header>
-                        <section class="donut-card__body-text">
-                            <h3 class="donut-card__name">Chocolate Glazed</h3>
-                            <p class="donut-card__description">Chocolate dipped donut</p>
-                            <span class="donut-card__price">$5.00</span>
-                            <a href="#" class="donut-card__btn" target="_blank" data-toggle="modal" data-target="#cartModal">Add
-                                to Cart</a>
-                        </section>
-                    </article>
-
 
         </section>
 
@@ -113,8 +101,9 @@
     </footer>
 
 
-<!--Cart Modal-->
-<div class="modal fade bd-example-modal-lg" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModal" aria-hidden="true">
+    <!--Cart Modal-->
+    <div class="modal fade bd-example-modal-lg" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModal"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -124,9 +113,9 @@
                     </button>
                 </div>
                 <div id="modal-body" class="modal-body">
-                        <table id="modal-table" class="table"></table>
-                        <footer class="modal-content__footer">Total: $19</footer>
-                    </div>
+                    <table id="modal-table" class="table"></table>
+                    <footer class="modal-content__footer"></footer>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Back to the donuts</button>
                     <a href="/confirmation"><button type="button" class="modal-content__btn">Place Order</button></a>
