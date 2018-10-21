@@ -2,9 +2,9 @@ $(document).ready(function () {
 
   function createMenuBody(menuItem) {
     return $('<article>').addClass("donut-card")
-      .append($('<header>').append($('<img>').attr({
+      .append($('<header>').append(($('<div>').addClass('donut-card__iconContainer').append($('<i>').addClass('fas fa-heart')).append($('<img>').attr({
         src: menuItem.avatar
-      }).addClass('donut-card__img')))
+      }).addClass('donut-card__img')))))
       .append($('<section>').addClass('donut-card__body-text')
         .append($('<h3>').text(menuItem.name).addClass('donut-card__name'))
         .append($('<p>').text(menuItem.description).addClass('donut-card__description'))
@@ -147,7 +147,7 @@ $(document).ready(function () {
 
 
 
-  
+
 
 
 
@@ -225,6 +225,22 @@ $(document).ready(function () {
         renderOrderData(val.order);
       }
 
+    })
+  })
+
+
+  $('.like_button').on('click', (event) => {
+    let itemId = event.target.id.slice(12);
+
+    $.ajax('/addLikedItem', {
+      method: 'POST',
+      data: {
+        item_id: itemId
+      },
+      success: (val) => {
+        console.log(val.items);
+
+      }
     })
   })
 

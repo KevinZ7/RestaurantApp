@@ -232,7 +232,6 @@ function loadMenuItems(){
 app.get("/items",function(req,res){
   loadMenuItems()
     .then((cart) => {
-      console.log(cart)
       res.status(200);
       res.json({menu: cart})
     })
@@ -293,7 +292,54 @@ app.post("/confirmOrder", (req,res) => {
       })
     })
   })
+})
 
+function addLikedItem(itemId,userId){
+  return knex('liked_items')
+  .insert({
+    users_id: userId,
+    menu_items_id: itemId
+  })
+}
+
+function getLikedItem(userId){
+  return knex('liked_items')
+  .join('menu_items','menu_items_id', '=', 'menu_items.id')
+  .select('menu_items.id','menu_items.name','menu_items.price','menu_items.avatar','menu_items.description')
+}
+
+
+
+app.post("/addLikedItem", (req,res) => {
+  let itemId = req.body.item_id;
+  let userId = 6;
+
+  getLikedItem(userId)
+  .then((value) => {
+    let found = false;
+    value.forEach((item) => {
+      if(item.id == itemId){
+        found = true;
+      }
+    })
+
+    if(found === false){
+      addLikedItem(itemId,userId)
+      .then(() => {
+        getLikedItem(userId)
+        .then((result) => {
+          res.status(201);
+          res.json({items:result});
+        })
+      });
+    } else{
+      getLikedItem(userId)
+      .then((result) => {
+        res.status(201);
+        res.json({items:result});
+      })
+    }
+  })
 
 })
 
