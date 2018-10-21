@@ -31,17 +31,27 @@
     <main>
         <section>
             <header class="hero-banner">
-                <nav id="nav-bar">
-                    <a class="navbar-brand" href="/index.html">Donut Party</a>
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" href="/"><img src="/images/donut_logo.svg" width="50" height="50" alt="Gonuts Donuts Logo"
+                            class="d-inline-block align-top"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-item nav-link" href="#">Customer</a>
+                            <a class="nav-item nav-link" href="#">Admin</a>
+                        </div>
+                    </div>
                 </nav>
                 <h1 class="hero-banner__title">Active Orders</h1>
             </header>
         </section>
-        <!--orders will be the empty bucket that we will append new order-cards to-->
         <h3 class="orders__title">Orders requiring acceptance</h3>
 
-        <section class="orders">
-            <!--Order Card 1-->
+        <!-- <section class="orders">
             <article id="order-card" class="order-card">
                 <table class="table">
                     <thead>
@@ -85,12 +95,11 @@
                 </footer>
 
             </article>
-        </section>
-
+        </section> -->
 
     </main>
 
-    <footer>
+    <footer class="footer-global">
         <p>Copyright Lighthouse Labbers</p>
     </footer>
     <!-- JS -->
