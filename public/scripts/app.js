@@ -56,8 +56,8 @@ $(document).ready(function(){
               .append($('<td>').addClass('modal-content__name').text(cartItem.name))
               .append($('<td>').addClass('modal-content__qty').text(`${cartItem.count}`))
               .append($('<td>').addClass('modal-content__price').text(`$${(Number(cartItem.price))/100}`))
-              .append($('<button>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("delete"))
-              .append($('<button>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("add"))
+              .append($('<button>').attr('id', `minus_${cartItem.id}`).addClass('modal-content__qtyBtn').text("-"))
+              .append($('<button>').attr('id', `plus_${cartItem.id}`).addClass('modal-content__qtyBtn').text("+"))
               ))
            })
 

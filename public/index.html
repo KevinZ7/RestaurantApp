@@ -94,8 +94,10 @@
         <p>Copyright Lighthouse Labbers</p>
     </footer>
 
-    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModal" aria-hidden="true">
-        <div class="modal-dialog">
+ 
+<!--Cart Modal-->
+<div class="modal fade bd-example-modal-lg" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="largeCartModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel">Your Cart </h4>
@@ -103,11 +105,26 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body"></div>
+                <div class="modal-body">
+                    <table class="table">
+
+                        <tr>
+                            <td class="modal-content__name">
+                                Chocolate Dipped Donut
+                            </td>
+                            <td class="modal-content__qty">
+                                Qty: 3
+                            </td>
+                            <td class="modal-content__price">
+                                $12.00
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Back to the donuts</button>
-                    <a href="/confirmation"><button type="button" id="submitOrder" class="btn btn-primary btn-lg btn-block">Place
-                            Order</button></a>
+                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Back to the donuts</button> -->
+                    <button type="button" class="modal-content__btn">Place Order</button>
                 </div>
             </div>
         </div>
