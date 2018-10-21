@@ -45,22 +45,21 @@ $(document).ready(function () {
         item_id: itemId
       },
       success: (val) => {
-        $('table').remove();
+        $('tr').remove();
         $('footer').remove();
         var cart = val.cart;
         var total = 0;
         cart.forEach((cartItem, i) => {
           total += Number(cartItem.sum) / 100;
 
-          $(".modal-body").append($('<table>').addClass('table')
-            .append($('<tr>')
+          $("#modal-table").append($('<tr>')
               .append($('<td>').text(cartItem.name))
               .append($('<td>').text(cartItem.count))
               .append($('<td><button></td>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("-"))
               .append($('<td><button></td>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("+"))
               .append($('<td>').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
 
-            ))
+            )
         })
 
         $('.modal-body').append($('<footer>').text(`Total $${(total).toFixed(2)}`).addClass('modal-content__footer'));
@@ -80,7 +79,7 @@ $(document).ready(function () {
       success: (val) => {
 
         console.log(val);
-        $('.table').remove();
+        $('tr').remove();
         $('footer').remove();
         var cart = val.cart;
         var total = 0;
@@ -88,14 +87,13 @@ $(document).ready(function () {
         cart.forEach((cartItem, i) => {
           total += Number(cartItem.sum) / 100;
 
-          $(".modal-body").append($('<table>').addClass('table')
-            .append($('<tr>')
+          $("#modal-table").append($('<tr>')
               .append($('<td>').text(cartItem.name))
               .append($('<td>').text(cartItem.count))
               .append($('<td><button></td>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("-"))
               .append($('<td><button></td>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("+"))
               .append($('<td>').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
-            ))
+            )
         })
         $('.modal-body').append($('<footer>').text(`Total $${(total).toFixed(2)}`).addClass('modal-content__footer'));
       }
@@ -113,7 +111,7 @@ $(document).ready(function () {
       success: (val) => {
 
         console.log(val);
-        $('.table').remove();
+        $('tr').remove();
         $('footer').remove();
         var cart = val.cart;
         var total = 0;
@@ -121,14 +119,13 @@ $(document).ready(function () {
         cart.forEach((cartItem, i) => {
           total += Number(cartItem.sum) / 100;
 
-          $(".modal-body").append($('<table>').addClass('table')
-            .append($('<tr>')
+          $("#modal-table").append($('<tr>')
               .append($('<td>').text(cartItem.name))
               .append($('<td>').text(cartItem.count))
               .append($('<td><button></td>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("-"))
               .append($('<td><button></td>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("+"))
               .append($('<td>').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
-            ))
+            )
         })
         $('.modal-body').append($('<footer>').text(`Total $${(total).toFixed(2)}`).addClass('modal-content__footer'));
       }
@@ -137,8 +134,10 @@ $(document).ready(function () {
 
 
 
-  $("#submitOrder").click((event) => {
-    $('.table').remove();
+  $(".modal-content__btn").click((event) => {
+
+    $('tr').remove();
+    $('#cartModal').slideToggle(0)
     $('footer').remove().append($('<p>').text('your order has been placed'));
     $.ajax('/addToOrder', {
       method: "POST",
