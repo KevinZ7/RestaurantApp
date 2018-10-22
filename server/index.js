@@ -27,7 +27,10 @@ const{confirmOrder,
   removeFromCart,
   addToCart,
   getCartLineItem,
-  orderIdents} = require('../data-helpers/cart-knex')(knex);
+  orderIdents,
+  addLikedItem,
+  getLikedItem,
+  removeLikedItem,} = require('../data-helpers/cart-knex')(knex);
 
 
 
@@ -142,7 +145,6 @@ app.get("/items",function(req,res){
 app.get('/favourite', function(req,res){
   getLikedItem(6)
   .then((items) => {
-    console.log(items)
     res.status(200);
     res.json({favouriteInfo: items })
   })
@@ -152,6 +154,7 @@ app.get('/favourite', function(req,res){
 app.post("/confirmOrder", (req,res) => {
   let orderId = req.body.order_id;
   let userId = 6;
+  let orderEta = req.body.order_eta;
 
   confirmOrder(orderId,userId)
   .then(()=>{
@@ -168,7 +171,7 @@ app.post("/confirmOrder", (req,res) => {
           {
             to: '+16044410372',
             from: '+16042655347',
-            body: 'Your order has been confirmed and will be available in 15 minutes! Thank you for your purchase from Gonuts Donuts!',
+            body: `Your order has been confirmed and will be available in ${orderEta} minutes! Thank you for your purchase from Gonuts Donuts!`,
           },
           (err, message) => {
             console.log(message.sid);
@@ -179,19 +182,6 @@ app.post("/confirmOrder", (req,res) => {
   })
 })
 
-function addLikedItem(itemId,userId){
-  return knex('liked_items')
-  .insert({
-    users_id: userId,
-    menu_items_id: itemId
-  })
-}
-
-function getLikedItem(userId){
-  return knex('liked_items')
-  .join('menu_items','menu_items_id', '=', 'menu_items.id')
-  .select('menu_items.id','menu_items.name','menu_items.price','menu_items.avatar','menu_items.description')
-}
 
 
 
@@ -229,13 +219,6 @@ app.post("/addLikedItem", (req,res) => {
 
 })
 
-function removeLikedItem(userId,itemId){
-  return knex('liked_items')
-  .where({
-    menu_items_id: itemId
-  })
-  .del()
-}
 
 app.post("/removeLikedItem", (req,res) => {
   let itemId = req.body.item_id;

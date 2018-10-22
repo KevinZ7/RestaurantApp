@@ -112,6 +112,28 @@ function confirmOrder(orderId,userId){
   })
 }
 
+function addLikedItem(itemId,userId){
+  return knex('liked_items')
+  .insert({
+    users_id: userId,
+    menu_items_id: itemId
+  })
+}
+
+function getLikedItem(userId){
+  return knex('liked_items')
+  .join('menu_items','menu_items_id', '=', 'menu_items.id')
+  .select('menu_items.id','menu_items.name','menu_items.price','menu_items.avatar','menu_items.description')
+}
+
+function removeLikedItem(userId,itemId){
+  return knex('liked_items')
+  .where({
+    menu_items_id: itemId
+  })
+  .del()
+}
+
 return{
   confirmOrder,
   loadOrder,
@@ -122,6 +144,9 @@ return{
   addToCart,
   getCartLineItem,
   orderIdents,
+  addLikedItem,
+  getLikedItem,
+  removeLikedItem,
 };
 
 }
