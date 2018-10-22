@@ -1,8 +1,6 @@
 @import 'brand.scss';
 
 /* Active Orders Admin Page */
-
-/* section for the orders */
 .orders {
     align-content: center;
     display: flex;
@@ -17,7 +15,6 @@
     }
 }
 
-/* indivdual order card */
 .order-card {
     background: $white;
     flex-basis: 80%;
@@ -90,7 +87,6 @@
 .table td,
 .table th {
     border-top: none;
-    // border-bottom: 1px solid $grey;
 }
 
 input:focus,

@@ -60,26 +60,8 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-evenly;
-        // padding: 0 2em 0 2em;
     }
 
-
-    &__btn {
-        background-color: transparent;
-        color: #000;
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        font-weight: 700;
-        padding: 1em;
-        text-decoration: none;
-        border-style: solid;
-        border-width: .1em;
-    }
-
-    &__btn:hover {
-        background-color: rgba(255, 255, 255, 0.5);
-        color: #000;
-    }
 
     &__body {
         margin-bottom: 2em;
