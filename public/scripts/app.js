@@ -245,20 +245,29 @@ $(document).ready(function () {
     })
   })
 
-  $('.lala').on('click','.lalala' , (event) => {
-    let itemId = event.target.id.slice( 3);
+  function createLikedBody(menuItem) {
+    return $('<article>').addClass("donut-card")
+      .append($('<header>').append(($('<div>').addClass('donut-card__iconContainer').append($('<i>').addClass('fas fa-heart').attr('id',`like_button_${menuItem.id}`)).append($('<img>').attr({
+        src: menuItem.avatar
+      }).addClass('donut-card__img')))))
+      .append($('<section>').addClass('donut-card__body-text')
+        .append($('<h3>').text(menuItem.name).addClass('donut-card__name'))
+        .append($('<p>').text(menuItem.description).addClass('donut-card__description'))
+        .append($('<p>').text(`$${(Number(menuItem.price)/100).toFixed(2)}`).addClass('donut-card__price'))
+        .append($('<a>').addClass('donut-card__btn').attr({
+          id: menuItem.id,
+          href: '#',
+          'data-toggle': 'modal',
+          'data-target': '#cartModal',
+          'target': '_blank'
+        }).text('Add to Cart')))
+  }
 
-    $.ajax('/removeLikedItem', {
-      method: 'POST',
-      data: {
-        item_id: itemId
-      },
-      success: (val) => {
-        console.log(val.items);
-      }
-     }
-    )
-  })
+  function renderLiked(data) {
+    data.forEach((menuItem) => {
+      $('.card-layout').append(createMenuBody(menuItem))
+    })
+  }
 
   function favouriteD(){
     $.ajax('/favourite')
@@ -268,6 +277,25 @@ $(document).ready(function () {
   }
 
   favouriteD();
+
+
+
+
+  $('.lala').on('click','.lalala' , (event) => {
+    let itemId = event.target.id.slice( 3);
+
+    $.ajax('/removeLikedItem', {
+      method: 'POST',
+      data: {
+        item_id: itemId
+      },
+      success: (val) => {
+        favouriteD();
+      }
+     }
+    )
+  })
+
 
 
 
