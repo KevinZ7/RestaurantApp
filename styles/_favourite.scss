@@ -69,3 +69,22 @@
 
 
 }
+
+
+@media only screen and (max-width: 800px) {
+    
+    .user__img{
+        width: 50%;
+        
+    }
+    .user__profileContainer {
+        flex-basis: 100%;
+        padding: 2em;
+    }
+    .user__favouriteDonuts {
+        flex-basis: 100%;
+    }
+
+    
+
+}

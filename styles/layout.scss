@@ -60,8 +60,9 @@ color: transparentize($darkBlue, .5);
 .footer-global {
   background: $darkBlue;
   position: sticky;
-  color: #fff;
+  color: lighten($darkBlue, 30%);
   padding: 1em;
+  height:100px;
 }
 
 section {
