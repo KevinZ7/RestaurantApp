@@ -214,6 +214,7 @@ $(document).ready(function () {
   $('.orderContainer').on('click', '.order-card__btn', (event) => {
     let orderId = event.target.id.slice(12);
 
+
     $.ajax('/confirmOrder', {
       method: 'POST',
       data: {
