@@ -5,31 +5,61 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding: 5em 0 1em 0;
-
+    padding: 5em 0 1em 1em;
 
     &__profileContainer {
-        flex-basis: 48%;
+        flex-basis: 25%;
     }
 
     &__textContent {
         text-align: left;
         align-items: center;
-        margin: 0 1em 0 1em;
     }
 
-    /* profile img */
     &__img {
         width: 100%;
         align-items: center;
+        border-radius: 50%;
+        margin: 0 0 2em 0;
+
+    }
+
+    &__name {
+        text-align: center;
+        font-family: 'copse', serif;
+    }
+
+    &__bio {
+        text-align: center;
+
     }
 
     &__favouriteDonuts {
-        flex-basis: 48%;
+        flex-basis: 74%;
     }
 
-    &__donutList {}
+    &__section-intro {
+        text-align: center;
+        padding: 0em 0 2em 0;
 
+    }
+
+    &__heading {
+        text-align: center;
+        font-size: 3em;
+    }
+
+    &__donutList{
+        padding: 0;
+    }
+
+    &__card-layout {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        // padding: 0 2em 0 2em;
+    }
 
 
     &__btn {
@@ -49,12 +79,9 @@
         color: #000;
     }
 
-
-
     &__body {
         margin-bottom: 2em;
     }
 
 
 }
-
