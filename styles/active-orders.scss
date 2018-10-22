@@ -51,7 +51,7 @@
         text-align: center;
     }
 
-    &____estimate {
+    &__estimate {
         font-size: 1.4em;
     }
 
@@ -63,11 +63,18 @@
         padding: .7em;
         font-size: .8em;
     }
+
     &__btn:hover {
         background-color: darkgrey;
     }
 
+    &__form {
+        padding: .5em;
+    }
 
+    &__etaValue {
+        padding-right: .5em;
+    }
 
     &__footer {
         background: transparent;
