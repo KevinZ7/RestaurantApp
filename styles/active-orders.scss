@@ -56,16 +56,17 @@
     }
 
     &__btn {
-        background-color: grey;
+        background-color: rgba(0, 0, 0, 0.8);
         color: #fff;
-        text-transform: uppercase;
-        font-weight: 700;
-        padding: .7em;
-        font-size: .8em;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+        padding: 0.7em 1.2em;
+        font-size: 0.8em;
     }
 
     &__btn:hover {
-        background-color: darkgrey;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
     }
 
     &__form {
@@ -73,8 +74,9 @@
     }
 
     &__etaValue {
-        padding-right: 0 .5em 0 .5em;
+        margin: 0 .5em 0 .5em;
     }
+    
 
     &__footer {
         background: transparent;
@@ -91,6 +93,12 @@
     border-bottom: 1px solid #dee2e6;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
 
 /* Breakpoints */
 @media only screen and (max-width: 500px) {
