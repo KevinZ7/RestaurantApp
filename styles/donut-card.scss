@@ -13,9 +13,11 @@
     flex-basis: 30%;
     min-width: 300px;
     margin: 0 .5em 1em .5em;
+    position: relative;
 
     &__img {
-        width: 100%
+        width: 100%;
+        
     }
 
     &__body-text {
