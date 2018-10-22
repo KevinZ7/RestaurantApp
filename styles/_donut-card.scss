@@ -11,15 +11,16 @@
 }
 
 .donut-card {
-    background: #ffffff;
+    background: $white;
     flex-basis: 30%;
     min-width: 300px;
-    margin: 0 .5em 1em .5em;
+    margin: 0 .5em 1.5em .5em;
     position: relative;
+    box-shadow: 0 0 1.7em rgba($darkBlue, .3);
 
     &__img {
         width: 100%;
-        
+
     }
 
     &__body-text {
@@ -42,7 +43,7 @@
     }
 
     &__btn {
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: darken($blue, 10%);
         color: #fff;
         font-weight: 300;
         letter-spacing: .05em;
@@ -51,10 +52,11 @@
     }
 
     &__btn:hover {
-        background-color: rgba(0, 0, 0, 0.7);
-        color: #fff;
+        background-color: darken($blue, 40%);
+        color: $white;
     }
-/* Try grid on the iconContainer with the .fas icon*/
+
+    /* Try grid on the iconContainer with the .fas icon*/
     &__iconContainer {
         position: relative;
     }
@@ -66,7 +68,7 @@
 /*bootstrap override code*/
 
 .fas {
-    color: rgba(255,255,255,.7);
+    color: rgba($white, .4);
     font-size: 1.8em;
     position: absolute;
     left: 91%;
@@ -77,7 +79,7 @@
 }
 
 .fas:hover {
-    color:  rgba(255,255,255,1); 
+    color: $white;
     cursor: pointer;
 
 }
@@ -88,5 +90,3 @@
         flex-basis: 100%;
     }
 }
-
-

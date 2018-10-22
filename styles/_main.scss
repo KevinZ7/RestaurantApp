@@ -4,7 +4,6 @@
 
 
 .hero-banner {
-    /* width: 100%; */
     background-image: url(/images/donut-hero1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -19,45 +18,45 @@
     }
 
     &__title {
-        font-family: 'copse', serif;
+        font-family: $serif;
         font-size: 75px;
         letter-spacing: .02em;
         text-align: center;
-        color: #fff;
+        color: $white;
         padding: .5em 0 0 0;
 
         &.cardTitle {
             font-size: 50px;
-            color: black;
+            color: $darkBlue;
             padding: 0;
 
         }
     }
 
     &__subhead {
-        color: #fff;
+        color: $white;
         font-size: 1.8em;
         padding: 0 0 2em 0;
-        font-family: 'copse', serif;
+        font-family: $serif;
     }
 
     &__btn {
-        color: #fff;
+        color: $white;
         text-transform: uppercase;
         letter-spacing: .2em;
         font-weight: 700;
         padding: 1em;
         text-decoration: none;
-        border-color: rgba(255, 255, 255, 1);
+        border-color: $white;
         border-style: solid;
         border-width: 0.1em;
     }
 
 
     &__btn:hover {
-        background-color: rgba(255, 255, 255, .2);
+        background-color: rgba($white, .2);
         text-decoration: none;
-        color: #fff;
+        color: $white;
     }
 
     &__container {
@@ -68,12 +67,12 @@
     }
 
     &__card {
-        background: #ffffff;
+        background: $white;
         flex-basis: 50%;
         margin: 5em 5em 5em 5em;
-        padding: 1em;
+        padding: 1em 1.5em 3em 1.5em;
         min-width: 300px;
-        box-shadow: 0 0 2em #333;
+        box-shadow: 0 0 1.6em $darkBlue;
     }
 
 

@@ -6,7 +6,7 @@
     font-size: 1em;
 
     &__btn {
-        background-color: rgba($darkBlue, 0.8);
+        background-color: darken($blue, 10%);
         color: $white;
         font-weight: 300;
         letter-spacing: .05em;
@@ -15,7 +15,7 @@
     }
 
     &__btn:hover {
-        background-color: rgba($darkBlue, 0.7);
+        background-color: darken($blue, 40%);
         color: $white;
     }
 
@@ -54,7 +54,7 @@
 /* bootstrap override */
 
 .table td {
-    padding-bottom: 0;
+    padding-bottom: 1em;
 }
 
 
