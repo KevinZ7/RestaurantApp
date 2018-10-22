@@ -1,3 +1,5 @@
+@import 'brand.scss';
+
 /* Donut Card CSS */
 
 .card-layout {
@@ -9,13 +11,16 @@
 }
 
 .donut-card {
-    background: #ffffff;
+    background: $white;
     flex-basis: 30%;
     min-width: 300px;
-    margin: 0 .5em 1em .5em;
+    margin: 0 .5em 1.5em .5em;
+    position: relative;
+    box-shadow: 0 0 1.7em rgba($darkBlue, .3);
 
     &__img {
-        width: 100%
+        width: 100%;
+
     }
 
     &__body-text {
@@ -38,8 +43,8 @@
     }
 
     &__btn {
-        background-color: rgba(0, 0, 0, 0.8);
-        color: #fff;
+        background-color: darken($blue, 10%);
+        color: $white;
         font-weight: 300;
         letter-spacing: .05em;
         padding: 0.7em 1.2em;
@@ -47,13 +52,13 @@
     }
 
     &__btn:hover {
-        background-color: rgba(0, 0, 0, 0.7);
-        color: #fff;
+        background-color: darken($blue, 40%);
+        color: $white;
     }
 
+    /* Try grid on the iconContainer with the .fas icon*/
     &__iconContainer {
         position: relative;
-        display: inline-block;
     }
 
 
@@ -63,17 +68,22 @@
 /*bootstrap override code*/
 
 .fas {
-    color: rgba(255,255,255,.7);
+    color: rgba($white, .4);
     font-size: 1.8em;
     position: absolute;
     left: 91%;
     top: 8%;
     transform: translate(-50%, -50%);
+    cursor: pointer;
+
 }
 
 .fas:hover {
-    color:  rgba(255,255,255,1); 
+    color: $white;
+    cursor: pointer;
+
 }
+
 
 @media only screen and (max-width: 500px) {
     .donut-card {

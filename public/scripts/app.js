@@ -33,7 +33,6 @@ $(document).ready(function () {
 
   loadMenu();
 
-  //NEW
 
   $('.card-layout').on('click', '.donut-card__btn', (event) => {
     let itemId = event.target.id;
@@ -150,8 +149,6 @@ $(document).ready(function () {
 
 
 
-
-
   function renderOrderBody(orderInfo) {
     return $('<tr>')
       .append($('<td>').addClass('order-card__name').text(orderInfo.name))
@@ -171,7 +168,10 @@ $(document).ready(function () {
             .append($('<td>').addClass('order-card__label').text('Donut Type'))
             .append($('<td>').addClass('order-card__label center').text('Quantity'))))
         .append($('<footer>').addClass('order-card__footer')
-          .append($('<button>').addClass('order-card__btn').attr('id', `orderButton_${orderIdent.id}`).text('Confirm Order')))
+        .append($('<form>').addClass('order-card__form')
+        .append($('<label>').text('Estimated Time'))
+        .append($('<input>').attr('id', 'order-card__etaValue').addClass('order-card__etaValue'))
+          .append($('<button>').addClass('order-card__btn').attr('id', `orderButton_${orderIdent.id}`).text('Confirm Order'))))
       )
   }
 

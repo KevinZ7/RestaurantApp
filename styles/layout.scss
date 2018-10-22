@@ -1,9 +1,12 @@
-$sans-serif: 'Work Sans',
-sans-serif;
-$serif: 'Copse',
-serif;
+@import 'about-section.scss';
+@import 'active-orders.scss';
+@import 'brand.scss';
+@import 'cart.scss';
+@import 'donut-card.scss';
+@import 'favourite.scss';
+@import 'main.scss';
+@import 'nav.scss';
 
-//to-do : add variables for common colors.
 
 a {
   text-decoration: none;
@@ -17,6 +20,7 @@ button {
   text-decoration: none;
   border-color: none;
   border-style: none;
+  cursor: pointer;
 }
 
 button:hover {
@@ -29,9 +33,9 @@ button:focus {
 
 body {
   margin: 0;
-  color: #000;
+  color: $darkBlue;
   font-family: $sans-serif;
-  background-color: #ECECE4;
+  background-color: transparentize($yellow, .9);
 }
 
 .highlight {
@@ -39,9 +43,9 @@ text-transform: uppercase;
 letter-spacing: .3em;
 font-size: .7em;
 font-weight: 700;
-padding: 0;
+padding: 0 0 1em 0;
 margin: 0;
-color: rgba(0,0,0,.5)
+color: transparentize($darkBlue, .5); 
 }
 
 .container {
@@ -54,10 +58,11 @@ color: rgba(0,0,0,.5)
 }
 
 .footer-global {
-  background: #233340;
+  background: $darkBlue;
   position: sticky;
-  color: #fff;
+  color: lighten($darkBlue, 30%);
   padding: 1em;
+  height:100px;
 }
 
 section {
@@ -81,8 +86,11 @@ main {
   }
 }
 
+
+
 @media only screen and (max-width: 600px) {
   section {
     width: 100%;
   }
 }
+

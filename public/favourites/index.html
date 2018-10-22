@@ -5,21 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--Google Fonts-->
+    
     <link href="https://fonts.googleapis.com/css?family=Copse|Work+Sans:400,700" rel="stylesheet">
-    <!-- Bootstrap -->
+    
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
         crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="/styles/layout.css">
-    <link rel="stylesheet" type="text/css" href="/styles/main.css">
-    <link rel="stylesheet" type="text/css" href="/styles/nav.css">
-    <link rel="stylesheet" type="text/css" href="/styles/donut-card.css">
-    <link rel="stylesheet" type="text/css" href="/styles/about-section.css">
-    <link rel="stylesheet" type="text/css" href="/styles/cart.css">
-    <link rel="stylesheet" type="text/css" href="/styles/favourite.css">
 
-    <!-- Vendor CSS-->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css">
     <link rel="stylesheet" href="/vendor/border-box.css">
 
@@ -33,7 +29,7 @@
         <section>
             <header class="hero-banner">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="/"><img src="/images/donut_logo.svg" width="50" height="50" alt="Gonuts Donuts Logo"
+                    <a class="navbar-brand" href="/"><img src="/images/donut_logo.svg" alt="Gonuts Donuts Logo"
                             class="d-inline-block align-top"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,66 +44,72 @@
                         </div>
                     </div>
                 </nav>
-                <h1 class="hero-banner__title">Joel's Donuts</h1>
+                <h1 class="hero-banner__title">Your Favourite Donuts</h1>
             </header>
         </section>
 
-        <!--User profile-->
+
         <section class="user">
             <aside class="user__profileContainer">
                 <article class="user__textContent">
                     <img class="user__img" src="/images/profile_joel.png" alt="Donut with a bite taken out of it">
-                    <h3>Joel</h3>
-                    <p>Joel loves donuts.</p>
+                    <h3 class="user__name">Joel</h3>
+                    <p class="user__bio">Avid donut fan</p>
                 </article>
             </aside>
             <article class="user__favouriteDonuts">
                 <article class="user__donutList">
-                    <!--Favourite Donut List-->
-                    <section id="donut-menu" class="section-intro">
-                        <p class="highlight">your favourite</p>
-                        <h2 class="section-intro__heading">Donuts</h2>
-                        <section class="user__card-layout" id="likedDonuts">
-                            <article class="donut-card">
-                                <header>
-                                    <a href="#">unlike</a>
-                                    <img class="donut-card__img" src="/images/donut2.jpg">
-                                </header>
-                                <section class="donut-card__body-text">
-                                    <h3 class="donut-card__name">Test Donut 1</h3>
-                                    <p class="donut-card__description">Chocolate dipped donut</p>
-                                    <span class="donut-card__price">$5.00</span>
-                                    <a href="#" class="donut-card__btn" target="_blank" data-toggle="modal" data-target="#cartModal">Add
-                                        to Cart</a>
-                                </section>
-                            </article>
-                            <article class="donut-card">
-                                    <header>
-                                        <a href="#">unlike</a>
-                                        <img class="donut-card__img" src="/images/donut4.jpg">
-                                    </header>
-                                    <section class="donut-card__body-text">
-                                        <h3 class="donut-card__name">Test Donut 2</h3>
-                                        <p class="donut-card__description">Chocolate dipped donut</p>
-                                        <span class="donut-card__price">$5.00</span>
-                                        <a href="#" class="donut-card__btn" target="_blank" data-toggle="modal" data-target="#cartModal">Add
-                                            to Cart</a>
-                                    </section>
-                                </article>
-                        </section>
+                    <!--Donut Menu Intro-->
+                    <section class="user__section-intro">
+                        <p class="highlight">sweet sweet</p>
+                        <h2 class="user__heading">Donuts</h2>
+                    </section>
+                    <!-- Liked Donuts -->
+                    <section class="user__card-layout" id="donuts">
                         <!--Donuts render here-->
+                        <!--Hardcoded Donuts-->
+                        
+                        <article class="donut-card">
+                            <header>
+                                <div class="donut-card__iconContainer">
+                                    <i class="fas fa-minus-circle"></i>
+                                    <img class="donut-card__img" src="/images/donut4.jpg">
+                                </div>
+                            </header>
+                            <section class="donut-card__body-text">
+                                <h3 class="donut-card__name">Test Donut 1</h3>
+                                <p class="donut-card__description">Chocolate dipped donut</p>
+                                <p class="donut-card__price">$5.00</p>
+                                <a href="#" class="donut-card__btn" target="_blank" data-toggle="modal" data-target="#cartModal">Add
+                                    to Cart</a>
+                            </section>
+                        </article>
 
+                        <article class="donut-card">
+                            <header>
+                                <div class="donut-card__iconContainer">
+                                    <i class="fas fa-minus-circle"></i>
+                                    <img class="donut-card__img" src="/images/donut5.jpg">
+                                </div>
+                            </header>
+                            <section class="donut-card__body-text">
+                                <h3 class="donut-card__name">Test Donut 1</h3>
+                                <p class="donut-card__description">Chocolate dipped donut</p>
+                                <p class="donut-card__price">$5.00</p>
+                                <a href="#" class="donut-card__btn" target="_blank" data-toggle="modal" data-target="#cartModal">Add
+                                    to Cart</a>
+                            </section>
+                        </article>
+                        
                     </section>
                 </article>
             </article>
         </section>
 
-
-
     </main>
 
     <footer class="footer-global">
-        <p>Copyright Lighthouse Labbers</p>
+        <p>&copy; Kevin, David &amp; Andrea</p>
     </footer>
 
 
@@ -124,7 +126,7 @@
                 </div>
                 <div id="modal-body" class="modal-body">
                     <table id="modal-table" class="table"></table>
-                    <footer class="modal-content__footer">Total: $19</footer>
+                    <footer class="modal-content__footer"></footer>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Back to the donuts</button>

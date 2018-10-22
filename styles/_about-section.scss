@@ -1,6 +1,6 @@
-/* Favourites Page */
+@import 'brand.scss';
 
-.user {
+.about {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -8,7 +8,7 @@
     padding: 5em 0 1em 0;
 
 
-    &__profileContainer {
+    &__textContainer {
         flex-basis: 48%;
     }
 
@@ -18,23 +18,18 @@
         margin: 0 1em 0 1em;
     }
 
-    /* profile img */
+    &__imgContainer {
+        flex-basis: 48%;
+    }
+
     &__img {
         width: 100%;
         align-items: center;
     }
 
-    &__favouriteDonuts {
-        flex-basis: 48%;
-    }
-
-    &__donutList {}
-
-
-
     &__btn {
         background-color: transparent;
-        color: #000;
+        color: $darkBlue;
         text-transform: uppercase;
         letter-spacing: 0.2em;
         font-weight: 700;
@@ -42,32 +37,43 @@
         text-decoration: none;
         border-style: solid;
         border-width: .1em;
+        border-color: $darkBlue;
     }
+
+
 
     &__btn:hover {
-        background-color: rgba(255, 255, 255, 0.5);
-        color: #000;
+        background-color: rgba($white, 0.5);
+        color: $darkBlue;
     }
-
 
 
     &__body {
         margin-bottom: 2em;
     }
 
-
 }
 
 
+@media only screen and (max-width: 600px) {
+    
+    .about {
+        padding: 2em 0 1em 0;
+    }
+    
+    .about__imgContainer {
+        flex-basis: 100%;
+    }
+    .about__img {
+
+        display: none;
+    }
+
+    .about__textContainer {
+        flex-basis: 100%;
+    }
+
+    
 
 
-
-
-// .col-2 {
-//     background: #ffffff;
-//     flex-basis: 30%;
-// }
-
-// .col-2-img {
-//     max-width: 200px;
-// }
+}

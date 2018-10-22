@@ -5,24 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--Google Fonts-->
+
     <link href="https://fonts.googleapis.com/css?family=Copse|Work+Sans:400,700" rel="stylesheet">
-    <!-- Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-    <!--Font Awesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
         crossorigin="anonymous">
-
-
     <link rel="stylesheet" type="text/css" href="/styles/layout.css">
-    <link rel="stylesheet" type="text/css" href="/styles/main.css">
-    <link rel="stylesheet" type="text/css" href="/styles/nav.css">
-    <link rel="stylesheet" type="text/css" href="/styles/donut-card.css">
-    <link rel="stylesheet" type="text/css" href="/styles/about-section.css">
-    <link rel="stylesheet" type="text/css" href="/styles/cart.css">
-
-    <!-- Vendor CSS-->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css">
     <link rel="stylesheet" href="/vendor/border-box.css">
 
@@ -30,14 +19,11 @@
 </head>
 
 <body>
-    <!-- main content -->
     <main>
-        <!--nav-->
         <section>
             <header class="hero-banner">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="/"><img src="/images/donut_logo.svg" width="50" height="50" alt="Gonuts Donuts Logo"
-                            class="d-inline-block align-top"></a>
+                    <a class="navbar-brand" href="/"><img src="/images/donut_logo.svg" alt="Gonuts Donuts Logo" class="d-inline-block align-top"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -53,10 +39,10 @@
                 </nav>
 
                 <h1 class="hero-banner__title">Gonuts Donuts</h1>
+                <p class="hero-banner__subhead">The grab and go solution when you're nuts for donuts</p>
                 <a href="#donut-menu" class="hero-banner__btn">View Donuts</a>
             </header>
         </section>
-        <!--About Section-->
         <section class="about">
             <article class="about__imgContainer">
                 <article>
@@ -65,8 +51,8 @@
             </article>
             <article class="about__textContainer">
                 <article class="about__textContent">
-                    <p class="highlight">about us</p>
-                    <h2>History Lesson</h2>
+                    <p class="highlight">history</p>
+                    <h2>About us</h2>
                     <p class="about__body">Vanilla croissant vanilla vanilla apple cake sugar pastry marzipan cake.
                         Ipsum muffin jelly
                         biscuit ipsum biscuit tiramisu sweet apple biscuit. Pastry pastry pastry pastry sweet apple
@@ -74,37 +60,33 @@
                         sprinkles ipsum dolor. Croissant croissant orange marzipan pastry lollipop sugar sprinkles
                         ipsum biscuit.
                     </p>
-                    <a href="#" class="about__btn">Our Story</a>
+                    <a class="about__btn">Our Story</a>
 
                 </article>
             </article>
         </section>
 
-        <!--Donut Menu Intro-->
         <section id="donut-menu" class="section-intro">
             <p class="highlight">sugar time</p>
             <h2 class="section-intro__heading">Donut Menu</h2>
-            <!-- <p>Pick your donuts</p> -->
         </section>
 
         <section class="card-layout" id="donuts">
+            <!-- donuts render here -->
 
         </section>
 
-        <!--End of Donut Menu-->
 
-        <!-- <div class="testData"></div> -->
     </main>
 
     <footer class="footer-global">
-        <p>Copyright Lighthouse Labbers</p>
+        <p>&copy; Kevin, David &amp; Andrea</p>
     </footer>
 
 
     <!--Cart Modal-->
-    <div class="modal fade bd-example-modal-lg" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModal"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel">Your Cart </h4>
@@ -117,7 +99,7 @@
                     <footer class="modal-content__footer"></footer>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Back to the donuts</button>
+                    <button type="button" data-dismiss="modal">Back to the donuts</button>
                     <a href="/confirmation"><button type="button" class="modal-content__btn">Place Order</button></a>
                 </div>
             </div>
@@ -131,6 +113,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/effects.js"></script>
 
 </body>
 

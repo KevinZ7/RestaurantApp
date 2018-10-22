@@ -1,6 +1,6 @@
-/* Active Orders Admin Page */
+@import 'brand.scss';
 
-/* section for the orders */
+/* Active Orders Admin Page */
 .orders {
     align-content: center;
     display: flex;
@@ -15,14 +15,11 @@
     }
 }
 
-/* indivdual order card */
 .order-card {
-    background: #ffffff;
+    background: $white;
     flex-basis: 80%;
     margin: 0 .5em 1em .5em;
-    border-style: solid;
-    border-color: lightgrey;
-    border-width: .1em;
+    box-shadow: 0 0 1.7em rgba($darkBlue, .2);
 
     &__label {
         font-size: .8em;
@@ -51,23 +48,32 @@
         text-align: center;
     }
 
-    &____estimate {
+    &__estimate {
         font-size: 1.4em;
     }
 
     &__btn {
-        background-color: grey;
-        color: #fff;
-        text-transform: uppercase;
-        font-weight: 700;
-        padding: .7em;
-        font-size: .8em;
+        background-color: darken($blue, 10%);
+        color: $white;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+        padding: 0.7em 1.2em;
+        font-size: 0.8em;
     }
+
     &__btn:hover {
-        background-color: darkgrey;
+        background-color: darken($blue, 40%);
+        color: $white;
     }
 
+    &__form {
+        padding: .5em;
+    }
 
+    &__etaValue {
+        margin: 0 .5em 0 .5em;
+    }
+    
 
     &__footer {
         background: transparent;
@@ -81,9 +87,14 @@
 .table td,
 .table th {
     border-top: none;
-    border-bottom: 1px solid #dee2e6;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
 
 /* Breakpoints */
 @media only screen and (max-width: 500px) {

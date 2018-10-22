@@ -1,44 +1,44 @@
-/* nav CSS */
+@import 'brand.scss';
 
-// #nav-bar {
-//     background-color: transparent;
-// }
+/* nav CSS */
 
 .navbar {
     background-color: transparent;
     padding: 2em 2em 0 2em;
 }
 
-.logo {
-    width: 80px;
-}
 
 .navbar-brand {
-    color: #fff;
+    color: $white;
     text-transform: uppercase;
     font-size: 1em;
     text-decoration: none;
+    width: 5em;
 }
 
 /* bootstrap style over-rides */
 .navbar-light .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, .5);
+    color: rgba($white, .5);
     font-size: 1.2em;
+    cursor: pointer;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-    color: rgba(255, 255, 255, .9);
+    color: rgba($white, .9);
+    cursor: pointer;
+
 }
 
 .navbar-light .navbar-nav .active>.nav-link,
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .show>.nav-link {
-    color: rgba(255, 255, 255, .9);
+    color: rgba($white, .9);
+    cursor: pointer;
+
 }
 
 .navbar-light .navbar-toggler {
     border: none;
-    // border-color: rgba(0,0,0,.1);
-    background-color: rgba(255, 255, 255, .5);
+    background-color: rgba($white, .5);
 }
