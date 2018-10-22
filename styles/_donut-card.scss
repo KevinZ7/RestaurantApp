@@ -81,7 +81,10 @@
 .fas:hover {
     color: $white;
     cursor: pointer;
+}
 
+.fas:active {
+    color: $yellow;
 }
 
 
