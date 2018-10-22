@@ -53,7 +53,7 @@
         font-size: 3em;
     }
 
-    &__donutList{
+    &__donutList {
         padding: 0;
     }
 
@@ -74,24 +74,30 @@
 
 
 @media only screen and (max-width: 500px) {
-    
-    .user__img{
+
+    .user__img {
         width: 90%;
     }
 
-    .user__bio{
+    .user__bio {
         padding-bottom: 3em;
     }
+
     .user__profileContainer {
         flex-basis: 100%;
         margin: 0 1em 0 1em;
     }
 
+    .user__card-layout {
+padding:0;
+    }
 
     .user__favouriteDonuts {
         flex-basis: 100%;
+        padding:0;
+
     }
 
-    
+
 
 }
