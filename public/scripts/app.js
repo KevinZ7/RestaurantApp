@@ -26,7 +26,6 @@ $(document).ready(function () {
 
   function loadMenu() {
     $.ajax('/items').then((response) => {
-      console.log(response)
       renderMenu(response.menu);
     })
   }
@@ -36,7 +35,38 @@ $(document).ready(function () {
 
   $('.card-layout').on('click', '.donut-card__btn', (event) => {
     let itemId = event.target.id;
-    console.log(itemId);
+
+    $.ajax('/addToCart', {
+      method: "POST",
+      data: {
+        item_id: itemId
+      },
+      success: (val) => {
+        $('tr').remove();
+        $('footer').remove();
+        var cart = val.cart;
+        var total = 0;
+        cart.forEach((cartItem, i) => {
+          total += Number(cartItem.sum) / 100;
+
+          $("#modal-table").append($('<tr>')
+            .append($('<td>').text(cartItem.name))
+            .append($('<td>').text(cartItem.count))
+            .append($('<td><button></td>').attr('id', `minus_${cartItem.id}`).addClass('deleteOne').text("-"))
+            .append($('<td><button></td>').attr('id', `plus_${cartItem.id}`).addClass('addOne').text("+"))
+            .append($('<td>').text(`$${((Number(cartItem.price))/100).toFixed(2)}`))
+
+          )
+        })
+
+        $('.modal-body').append($('<footer>').text(`Total $${(total).toFixed(2)}`).addClass('modal-content__footer'));
+
+      }
+    })
+  });
+
+  $('.user__card-layout').on('click', '.donut-card__btn', (event) => {
+    let itemId = event.target.id;
 
     $.ajax('/addToCart', {
       method: "POST",
@@ -77,7 +107,6 @@ $(document).ready(function () {
       },
       success: (val) => {
 
-        console.log(val);
         $('tr').remove();
         $('footer').remove();
         var cart = val.cart;
@@ -109,7 +138,6 @@ $(document).ready(function () {
       },
       success: (val) => {
 
-        console.log(val);
         $('tr').remove();
         $('footer').remove();
         var cart = val.cart;
@@ -186,7 +214,6 @@ $(document).ready(function () {
 
 
   function renderOrderData(data) {
-    console.log(data)
     data.forEach((orderItem) => {
       let trId = orderItem.customer_orders_id;
       $(`#table_${trId}`).append(renderOrderBody(orderItem))
@@ -201,7 +228,6 @@ $(document).ready(function () {
         return data;
       })
       .then((result) => {
-        console.log("this is the results", result)
         renderOrderData(result.order)
       })
 
@@ -213,11 +239,13 @@ $(document).ready(function () {
 
   $('.orderContainer').on('click', '.order-card__btn', (event) => {
     let orderId = event.target.id.slice(12);
+    let orderTime = $('.order-card__etaValue').val();
 
     $.ajax('/confirmOrder', {
       method: 'POST',
       data: {
-        order_id: orderId
+        order_id: orderId,
+        order_eta: orderTime
       },
       success: (val) => {
         $('.orders').remove();
@@ -227,6 +255,75 @@ $(document).ready(function () {
 
     })
   })
+
+
+  $('.card-layout').on('click','.fa-heart', (event) => {
+    let itemId = event.target.id.slice(12);
+
+    $.ajax('/addLikedItem', {
+      method: 'POST',
+      data: {
+        item_id: itemId
+      },
+      success: (val) => {
+        console.log(val.items);
+
+      }
+    })
+  })
+
+  function createLikedBody(menuItem) {
+    return $('<article>').addClass("donut-card")
+      .append($('<header>').append(($('<div>').addClass('donut-card__iconContainer').append($('<i>').addClass("fas fa-minus-circle").attr('id',`unlike_button_${menuItem.id}`)).append($('<img>').attr({
+        src: `.${menuItem.avatar}`
+      }).addClass('donut-card__img')))))
+      .append($('<section>').addClass('donut-card__body-text')
+        .append($('<h3>').text(menuItem.name).addClass('donut-card__name'))
+        .append($('<p>').text(menuItem.description).addClass('donut-card__description'))
+        .append($('<p>').text(`$${(Number(menuItem.price)/100).toFixed(2)}`).addClass('donut-card__price'))
+        .append($('<a>').addClass('donut-card__btn').attr({
+          id: menuItem.id,
+          href: '#',
+          'data-toggle': 'modal',
+          'data-target': '#cartModal',
+          'target': '_blank'
+        }).text('Add to Cart')))
+  }
+
+  function renderLiked(data) {
+    $('.user__card-layout .donut-card').remove();
+    data.forEach((menuItem) => {
+      $('.user__card-layout').append(createLikedBody(menuItem))
+    })
+  }
+
+  function favouriteD(){
+    $.ajax('/favourite')
+    .then((data)=>{
+      renderLiked(data.favouriteInfo);
+    })
+  }
+
+  favouriteD();
+
+
+
+
+  $('.user__card-layout').on('click','.fa-minus-circle' , (event) => {
+    let itemId = event.target.id.slice(14);
+
+    $.ajax('/removeLikedItem', {
+      method: 'POST',
+      data: {
+        item_id: itemId
+      },
+      success: (val) => {
+        favouriteD();
+      }
+     }
+    )
+  })
+
 
 
 
