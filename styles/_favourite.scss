@@ -16,19 +16,21 @@
     &__textContent {
         text-align: left;
         align-items: center;
+        margin: 0 auto;
     }
 
     &__img {
         width: 100%;
         align-items: center;
         border-radius: 50%;
-        margin: 0 0 2em 0;
 
     }
 
     &__name {
         text-align: center;
-        font-family: 'copse', serif;
+        font-family: $serif;
+        margin: 1em 0 .4em 0;
+
     }
 
     &__bio {
@@ -71,16 +73,21 @@
 }
 
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 500px) {
     
     .user__img{
-        width: 50%;
-        
+        width: 90%;
+    }
+
+    .user__bio{
+        padding-bottom: 3em;
     }
     .user__profileContainer {
         flex-basis: 100%;
-        padding: 2em;
+        margin: 0 1em 0 1em;
     }
+
+
     .user__favouriteDonuts {
         flex-basis: 100%;
     }
