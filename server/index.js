@@ -19,28 +19,15 @@ const client = new Client({
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
-
-
-
-
-//function which queiries database and saves new order
-function loadOrder(){
-  return knex('order_line_items')
-  .join('customer_orders', 'customer_orders_id', '=', 'customer_orders.id')
-  .join('menu_items','menu_items_id', '=', 'menu_items.id')
-  .join('users','users_id','=','users.id')
-  .select('users.name','users.phone','menu_items.name','menu_items.price')
-  .count('*')
-  .groupBy('menu_items.name', 'users.name', 'users.phone', 'menu_items.price')
-  .asCallback()
-}
-
-function orderIdents(){
-  return knex('customer_orders')
-  .select('customer_orders.id')
-  .where({users_id: 6})
-  .asCallback()
-}
+const{confirmOrder,
+  loadOrder,
+  loadMenuItems,
+  getCartItems,
+  getCart,
+  removeFromCart,
+  addToCart,
+  getCartLineItem,
+  orderIdents} = require('../data-helpers/cart-knex')(knex);
 
 
 
@@ -58,81 +45,6 @@ app.get("/orderPlaced",(req, res) =>{
       })
     })
 })
-
-
-
-
-function getCartLineItem(itemId,userId){
-  return knex('cart_line_items')
-  .select('id')
-  .where({
-    menu_items_id : itemId,
-    users_id : userId
-  })
-  .limit(1)
-}
-// testing purposes:
-// getCartLineItem(1,1)
-// .then((result) => {
-//   console.log(result[0].id);
-//   console.log(typeof(result[0].id));
-// })
-
-
-
-function addToCart(itemId,userId,cb){
-  return knex('cart_line_items')
-  .insert({
-    users_id: userId,
-    menu_items_id : itemId
-  }).then(() => {
-    cb()
-
-  })
-}
-
-
-function removeFromCart(itemId,userId,cb){
-  return getCartLineItem(itemId,userId)
-  .then((result) => {
-    let tableId = result[0].id;
-    knex('cart_line_items')
-    .where('id',tableId)
-    .del()
-    .asCallback((err) => {
-      cb();
-    })
-  })
-}
-
-
-function getCart(userId){
-  return knex('cart_line_items')
-  .join('menu_items', 'menu_items_id', '=', 'menu_items.id')
-  .select('menu_items.id','menu_items.name','menu_items.avatar','menu_items.price')
-  .count('*')
-  .sum('menu_items.price')
-  .where({
-    users_id: userId
-  })
-  .groupBy('menu_items.id','menu_items.price')
-  .asCallback((err,result) => {
-   return result;
-  })
-}
-
-function getCartItems(userId){
-  return knex('cart_line_items')
-  .join('menu_items','menu_items_id', '=', 'menu_items.id')
-  .select('menu_items.id')
-  .where({
-    users_id: userId
-  })
-  .asCallback((err,result) => {
-    return result;
-  })
-
-}
 
 
 app.post("/removeFromCart", (req,res) => {
@@ -218,16 +130,6 @@ app.post("/addToOrder", (req,res) => {
 });
 
 
-//function which queiries database and saves menu items
-function loadMenuItems(){
-  return knex('menu_items')
-  .select('*')
-  .then((data) =>{
-   return data;
-  })
-}
-
-
 //saves items from database and makes them available client side
 app.get("/items",function(req,res){
   loadMenuItems()
@@ -237,32 +139,15 @@ app.get("/items",function(req,res){
     })
 });
 
-
-
-
-//function which queiries database and saves new order
-function loadOrder(){
-  return knex('order_line_items')
-  .join('customer_orders', 'customer_orders_id', '=', 'customer_orders.id')
-  .join('menu_items','menu_items_id', '=', 'menu_items.id')
-  .join('users','users_id','=','users.id')
-  .select('users.name','users.phone','menu_items.name','menu_items.price','customer_orders_id')
-  .count('*')
-  .groupBy('customer_orders.id','menu_items.name', 'users.name', 'users.phone', 'menu_items.price','order_line_items.customer_orders_id')
-  .asCallback()
-}
-
-function confirmOrder(orderId,userId){
-  return knex('order_line_items')
-  .where('customer_orders_id',orderId)
-  .del()
-  .then(() => {
-    knex('customer_orders')
-    .where('customer_orders.id',orderId)
-    .del()
-    .asCallback()
+app.get('/favourite', function(req,res){
+  getLikedItem(6)
+  .then((items) => {
+    console.log(items)
+    res.status(200);
+    res.json({favouriteInfo: items })
   })
-}
+})
+
 
 app.post("/confirmOrder", (req,res) => {
   let orderId = req.body.order_id;
@@ -310,6 +195,7 @@ function getLikedItem(userId){
 
 
 
+
 app.post("/addLikedItem", (req,res) => {
   let itemId = req.body.item_id;
   let userId = 6;
@@ -340,6 +226,30 @@ app.post("/addLikedItem", (req,res) => {
       })
     }
   })
+
+})
+
+function removeLikedItem(userId,itemId){
+  return knex('liked_items')
+  .where({
+    menu_items_id: itemId
+  })
+  .del()
+}
+
+app.post("/removeLikedItem", (req,res) => {
+  let itemId = req.body.item_id;
+  let userId = 6;
+
+  removeLikedItem(userId,itemId)
+  .then(() => {
+    getLikedItem(userId)
+    .then((result) => {
+      res.status(201);
+      res.json({items:result});
+    })
+  })
+
 
 })
 

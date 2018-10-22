@@ -229,7 +229,7 @@ $(document).ready(function () {
   })
 
 
-  $('.like_button').on('click', (event) => {
+  $('.card-layout').on('click','.fa-heart', (event) => {
     let itemId = event.target.id.slice(12);
 
     $.ajax('/addLikedItem', {
@@ -243,6 +243,30 @@ $(document).ready(function () {
       }
     })
   })
+
+  $('.lala').on('click','.lalala' , (event) => {
+    let itemId = event.target.id.slice( 3);
+
+    $.ajax('/removeLikedItem', {
+      method: 'POST',
+      data: {
+        item_id: itemId
+      },
+      success: (val) => {
+        console.log(val.items);
+      }
+     }
+    )
+  })
+
+  function favouriteD(){
+    $.ajax('/favourite')
+    .then((data)=>{
+
+    })
+  }
+
+  favouriteD();
 
 
 
