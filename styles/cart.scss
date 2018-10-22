@@ -1,19 +1,7 @@
 /* Cart Modal */
 .modal-content {
-    // font-size: 1.5em;
     background: #fff;
     font-size: 1em;
-
-    // &__name {
-    // }
-
-    // &__qty {
-    // }
-
-    // &__price {
-    // }
-
-
 
     &__btn {
         background-color: rgba(0, 0, 0, 0.8);
@@ -31,7 +19,7 @@
 
     &__footer {
         float: right;
-        padding: 0 1em 0 0;
+        padding: 0 2em 0 0;
         font-weight: 700;
     }
 }
@@ -61,7 +49,6 @@
     color: rgba(0, 0, 0, .5);
 }
 
-// over ride bootstrap css
 
 .table td {
     padding-bottom: 0;

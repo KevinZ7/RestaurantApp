@@ -15,7 +15,7 @@
     background-position: center center;
     text-align: center;
     align-content: center;
-    padding-bottom: 4em;
+    padding-bottom: 5em;
 
     &.lg {
         background-position: center bottom;
@@ -25,11 +25,10 @@
     &__title {
         font-family: 'copse', serif;
         font-size: 75px;
-        line-height: 1.34;
-        letter-spacing: .05em;
+        letter-spacing: .02em;
         text-align: center;
         color: #fff;
-        padding: .5em 0 .5em 0;
+        padding: .5em 0 0 0;
 
         &.cardTitle {
             font-size: 50px;
@@ -39,21 +38,30 @@
         }
     }
 
+    &__subhead {
+        color: #fff;
+        font-size: 1.5em;
+        padding: 0 0 2em 0;
+        font-family: 'copse', serif;
+    }
+
     &__btn {
-        background-color: rgba(255, 255, 255, 0.5);
         color: #fff;
         text-transform: uppercase;
         letter-spacing: .2em;
         font-weight: 700;
         padding: 1em;
         text-decoration: none;
+        border-color: rgba(255, 255, 255, 1);
+        border-style: solid;
+        border-width: 0.1em;
     }
 
-    &__btn:hover {
-        background-color: rgba(255, 255, 255, 1);
-        color: #000;
-        text-decoration: none;
 
+    &__btn:hover {
+        background-color: rgba(255, 255, 255, .2);
+        text-decoration: none;
+        color: #fff;
     }
 
     &__container {
@@ -72,5 +80,5 @@
         box-shadow: 0 0 2em #333;
     }
 
-    
+
 }
