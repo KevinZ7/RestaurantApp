@@ -37,7 +37,7 @@ It is a full stack web application built with HTML, Bootstrap, Flexbox, Sass, JS
 #### Admin Page / Active Orders
 ![Active Orders](https://github.com/KevinZ7/RestaurantApp/blob/master/docs/Active-Orders.jpg)
 
-![Active Orders in Action](https://i.gyazo.com/78f044dcc5ec7164f50785717ed5ae8f.gif)
+<img src="https://i.gyazo.com/78f044dcc5ec7164f50785717ed5ae8f.gif" width="300" />
 
 --------------------
 
