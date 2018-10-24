@@ -1,7 +1,7 @@
 #### 🍩 Gonuts Donuts 🍩  (Restaurant Order Pickup App)
 
 Gonuts Donuts is a site that allows a user to order donuts and be notified via SMS when their order will be ready for pickup, while simulatneously notifying the owner via SMS when an order has been placed.
-It is a full stack web application built with HTML, Sass, JS, jQuery, AJAX, Node, Express, Knex, PostgresSQL and Twilio.
+It is a full stack web application built with HTML, Bootstrap, Flexbox, Sass, JS, jQuery, AJAX, Node, Express, Knex, PostgresSQL and Twilio.
 
 ### Getting Started
 
@@ -17,6 +17,9 @@ It is a full stack web application built with HTML, Sass, JS, jQuery, AJAX, Node
 --------------------
 
 #### Home Page
+
+![Adding to Cart](https://i.gyazo.com/c4c41fed0849e8158cbb641b6d8bdfaa.gif)
+
 ![Home Page](https://github.com/KevinZ7/RestaurantApp/blob/master/docs/Home-Page.jpg)
 
 --------------------
@@ -34,11 +37,12 @@ It is a full stack web application built with HTML, Sass, JS, jQuery, AJAX, Node
 #### Admin Page / Active Orders
 ![Active Orders](https://github.com/KevinZ7/RestaurantApp/blob/master/docs/Active-Orders.jpg)
 
-[![Active Orders in Action](https://i.gyazo.com/78f044dcc5ec7164f50785717ed5ae8f.gif)]
+![Active Orders in Action](https://i.gyazo.com/78f044dcc5ec7164f50785717ed5ae8f.gif)
 
 --------------------
 
 #### Favourite Donuts
+![Adding and Deleting Favourite Donuts](https://i.gyazo.com/d394c6307333ee09f931a19b9c69b7a2.gif)
 ![Favourite Donuts](https://github.com/KevinZ7/RestaurantApp/blob/master/docs/Favourite-Donuts.jpg)
 
 --------------------
