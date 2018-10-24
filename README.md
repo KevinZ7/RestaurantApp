@@ -16,33 +16,30 @@ It is a full stack web application built with HTML, Sass, JS, jQuery, AJAX, Node
 
 --------------------
 
-## Home Page
+#### Home Page
 ![Home Page](https://github.com/KevinZ7/RestaurantApp/blob/master/docs/Home-Page.jpg)
 
 --------------------
 
-## Donut Menu
+#### Donut Menu
 ![Donut Menu](https://github.com/KevinZ7/RestaurantApp/blob/master/docs/Donut-Menu.jpg)
 
 --------------------
 
-## Cart
+#### Cart
 ![Cart](https://github.com/KevinZ7/RestaurantApp/blob/master/docs/Cart.jpg)
 
 --------------------
 
-## Admin Page / Active Orders
+#### Admin Page / Active Orders
 ![Active Orders](https://github.com/KevinZ7/RestaurantApp/blob/master/docs/Active-Orders.jpg)
 
 --------------------
---------------------
 
-## Favourite Donuts
+#### Favourite Donuts
 ![Favourite Donuts](https://github.com/KevinZ7/RestaurantApp/blob/master/docs/Favourite-Donuts.jpg)
 
 --------------------
-
-
 
 ### Dependencies
 
