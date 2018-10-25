@@ -17,7 +17,6 @@ It is a full stack web application built with HTML, Bootstrap, Flexbox, Sass, JS
 --------------------
 
 #### Home Page
-<img src="https://i.gyazo.com/c4c41fed0849e8158cbb641b6d8bdfaa.gif" width="1000" style="align-items: center;"/>
 
 ![Home Page](https://github.com/KevinZ7/RestaurantApp/blob/master/docs/Home-Page.jpg)
 
@@ -36,13 +35,10 @@ It is a full stack web application built with HTML, Bootstrap, Flexbox, Sass, JS
 #### Admin Page / Active Orders
 ![Active Orders](https://github.com/KevinZ7/RestaurantApp/blob/master/docs/Active-Orders.jpg)
 
-<img src="https://i.gyazo.com/78f044dcc5ec7164f50785717ed5ae8f.gif" width="1000" style="align-items: center;"/>
-
 --------------------
 
 #### Favourite Donuts
 
-<img src="https://i.gyazo.com/d394c6307333ee09f931a19b9c69b7a2.gif" width="1000" style="align-items: center;"/>
 ![Favourite Donuts](https://github.com/KevinZ7/RestaurantApp/blob/master/docs/Favourite-Donuts.jpg)
 
 --------------------
